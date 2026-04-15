@@ -1,0 +1,2177 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Комплектный Гайд: ПО и ОС для Разработчиков 2025-2026</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Icons -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['-apple-system', 'BlinkMacSystemFont', 'Inter', 'Segoe UI', 'Roboto', 'sans-serif'],
+                    },
+                    colors: {
+                        apple: {
+                            gray: {
+                                50: '#fafafa',
+                                100: '#f5f5f7',
+                                200: '#e8e8ed',
+                                300: '#d2d2d7',
+                                400: '#86868b',
+                                500: '#6e6e73',
+                                600: '#424245',
+                                700: '#3a3a3c',
+                                800: '#1d1d1f',
+                                900: '#000000',
+                            },
+                            blue: '#0071e3',
+                            'blue-hover': '#0077ed',
+                            purple: '#bf5af2',
+                            pink: '#ff375f',
+                            orange: '#ff9f0a',
+                            green: '#34c759',
+                            teal: '#5ac8fa',
+                            red: '#ff453a',
+                            indigo: '#5856d6',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        * { scroll-behavior: smooth; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;
+            background: #ffffff;
+            color: #1d1d1f;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.72);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            box-shadow: 0 4px 32px rgba(0, 0, 0, 0.06);
+        }
+        
+        .feature-card {
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .feature-card:hover {
+            transform: scale(1.02) translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #1d1d1f 0%, #5ac8fa 50%, #bf5af2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(180deg, #fbfbfd 0%, #f5f5f7 100%);
+        }
+        
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(0,0,0,0.06), transparent);
+        }
+        
+        .code-block {
+            background: #1d1d1f;
+            border-radius: 12px;
+            font-family: 'SF Mono', 'Menlo', 'Monaco', monospace;
+        }
+        
+        .pro-badge {
+            background: linear-gradient(135deg, #bf5af2 0%, #ff375f 100%);
+        }
+        
+        .free-badge {
+            background: linear-gradient(135deg, #34c759 0%, #30d158 100%);
+        }
+        
+        .os-card-windows {
+            background: linear-gradient(135deg, rgba(0, 113, 227, 0.05) 0%, rgba(0, 113, 227, 0.1) 100%);
+            border-left: 4px solid #0071e3;
+        }
+        
+        .os-card-macos {
+            background: linear-gradient(135deg, rgba(142, 142, 147, 0.05) 0%, rgba(142, 142, 147, 0.1) 100%);
+            border-left: 4px solid #86868b;
+        }
+        
+        .os-card-linux {
+            background: linear-gradient(135deg, rgba(252, 148, 15, 0.05) 0%, rgba(252, 148, 15, 0.1) 100%);
+            border-left: 4px solid #fc9413;
+        }
+        
+        .comparison-table th {
+            background: #f5f5f7;
+            font-weight: 600;
+        }
+        
+        .timeline-dot {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #0071e3;
+            box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.1);
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f5f5f7;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #d2d2d7;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #86868b;
+        }
+
+        .nav-blur {
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 nav-blur bg-white/80 border-b border-black/5 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-apple-blue flex items-center justify-center shadow-lg shadow-apple-blue/20">
+                    <iconify-icon icon="lucide:code-2" class="text-white text-lg"></iconify-icon>
+                </div>
+                <div class="hidden sm:block">
+                    <span class="font-semibold text-apple-gray-800 text-sm">DevStack Guide</span>
+                    <span class="text-apple-gray-400 text-xs ml-2">2025-2026</span>
+                </div>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#systems" class="text-apple-gray-600 hover:text-apple-blue transition-colors text-sm font-medium">ОС</a>
+                <a href="#ide" class="text-apple-gray-600 hover:text-apple-blue transition-colors text-sm font-medium">IDE</a>
+                <a href="#tools" class="text-apple-gray-600 hover:text-apple-blue transition-colors text-sm font-medium">Инструменты</a>
+                <a href="#practice" class="text-apple-gray-600 hover:text-apple-blue transition-colors text-sm font-medium">Задание</a>
+                <a href="#template" class="text-apple-gray-600 hover:text-apple-blue transition-colors text-sm font-medium">Шаблон</a>
+            </div>
+            
+            <button onclick="document.getElementById('template').scrollIntoView({behavior:'smooth'})" 
+                    class="px-5 py-2 rounded-full bg-apple-gray-800 text-white text-sm font-medium hover:bg-apple-gray-700 transition-all hover:scale-105 active:scale-95">
+                Начать отчёт →
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient min-h-screen flex items-center pt-20 relative overflow-hidden">
+        <!-- Decorative Elements -->
+        <div class="absolute top-32 left-10 w-64 h-64 bg-apple-teal/10 rounded-full blur-3xl float-animation"></div>
+        <div class="absolute bottom-20 right-10 w-80 h-80 bg-apple-purple/10 rounded-full blur-3xl float-animation" style="animation-delay: -2s;"></div>
+        <div class="absolute top-1/2 left-1/2 w-48 h-48 bg-apple-pink/8 rounded-full blur-3xl float-animation" style="animation-delay: -4s;"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 py-20 relative z-10">
+            <div class="text-center max-w-4xl mx-auto">
+                <!-- Badge -->
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-apple-gray-100 mb-8">
+                    <iconify-icon icon="lucide:sparkles" class="text-apple-orange"></iconify-icon>
+                    <span class="text-sm font-medium text-apple-gray-600">Полное руководство для учебной практики</span>
+                </div>
+                
+                <!-- Title with Icons -->
+                <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight mb-6 leading-tight">
+                    Комплектный Гайд:<br>
+                    <span class="gradient-text">ПО и ОС для Разработчиков</span>
+                </h1>
+                
+                <!-- Subtitle -->
+                <p class="text-xl sm:text-2xl text-apple-gray-500 mb-10 max-w-2xl mx-auto leading-relaxed">
+                    Windows • macOS • Linux &nbsp;|&nbsp; IDE • Tools • DevOps<br>
+                    <span class="text-base text-apple-gray-400">Всё, что нужно знать для настройки идеальной среды разработки</span>
+                </p>
+                
+                <!-- Icon Row -->
+                <div class="flex items-center justify-center gap-6 mb-12 flex-wrap">
+                    <div class="flex items-center gap-2 px-4 py-2 rounded-xl bg-white shadow-md">
+                        <iconify-icon icon="logos:microsoft-windows" class="text-2xl"></iconify-icon>
+                        <span class="text-sm font-medium text-apple-gray-700">Windows</span>
+                    </div>
+                    <div class="flex items-center gap-2 px-4 py-2 rounded-xl bg-white shadow-md">
+                        <iconify-icon icon="logos:apple" class="text-2xl"></iconify-icon>
+                        <span class="text-sm font-medium text-apple-gray-700">macOS</span>
+                    </div>
+                    <div class="flex items-center gap-2 px-4 py-2 rounded-xl bg-white shadow-md">
+                        <iconify-icon icon="logos:linux-tux" class="text-2xl"></iconify-icon>
+                        <span class="text-sm font-medium text-apple-gray-700">Linux</span>
+                    </div>
+                    <div class="flex items-center gap-2 px-4 py-2 rounded-xl bg-white shadow-md">
+                        <iconify-icon icon="logos:visual-studio-code" class="text-2xl"></iconify-icon>
+                        <span class="text-sm font-medium text-apple-gray-700">IDE</span>
+                    </div>
+                    <div class="flex items-center gap-2 px-4 py-2 rounded-xl bg-white shadow-md">
+                        <iconify-icon icon="logos:git-icon" class="text-2xl"></iconify-icon>
+                        <span class="text-sm font-medium text-apple-gray-700">Git</span>
+                    </div>
+                    <div class="flex items-center gap-2 px-4 py-2 rounded-xl bg-white shadow-md">
+                        <iconify-icon icon="logos:docker-icon" class="text-2xl"></iconify-icon>
+                        <span class="text-sm font-medium text-apple-gray-700">Docker</span>
+                    </div>
+                </div>
+                
+                <!-- CTA Buttons -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="#systems" class="group inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-apple-blue text-white font-semibold text-lg shadow-xl shadow-apple-blue/25 hover:bg-apple-blue-hover hover:shadow-2xl hover:shadow-apple-blue/30 transition-all hover:-translate-y-1">
+                        <span>Изучить материалы</span>
+                        <iconify-icon icon="lucide:arrow-down" class="group-hover:translate-y-1 transition-transform"></iconify-icon>
+                    </a>
+                    <a href="#template" class="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-apple-gray-100 text-apple-gray-800 font-semibold text-lg hover:bg-apple-gray-200 transition-all hover:-translate-y-1">
+                        <iconify-icon icon="lucide:file-text"></iconify-icon>
+                        <span>Шаблон отчёта</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+            <iconify-icon icon="lucide:chevron-down" class="text-3xl text-apple-gray-300"></iconify-icon>
+        </div>
+    </section>
+
+    <!-- Table of Contents -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-14">
+                <h2 class="text-4xl sm:text-5xl font-bold text-apple-gray-800 mb-4">Содержание</h2>
+                <p class="text-lg text-apple-gray-500">Навигация по разделам гайда</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Item 1 -->
+                <a href="#systems" class="feature-card glass-card rounded-2xl p-6 group">
+                    <div class="w-14 h-14 rounded-2xl bg-blue-50 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <iconify-icon icon="lucide:monitor" class="text-3xl text-apple-blue"></iconify-icon>
+                    </div>
+                    <h3 class="font-bold text-lg text-apple-gray-800 mb-2">Операционные Системы</h3>
+                    <p class="text-sm text-apple-gray-500">Windows 11 • macOS Sonoma • Linux (Ubuntu, Fedora, Arch, Pop!_OS)</p>
+                </a>
+                
+                <!-- Item 2 -->
+                <a href="#ide" class="feature-card glass-card rounded-2xl p-6 group">
+                    <div class="w-14 h-14 rounded-2xl bg-purple-50 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <iconify-icon icon="lucide:code-2" class="text-3xl text-apple-purple"></iconify-icon>
+                    </div>
+                    <h3 class="font-bold text-lg text-apple-gray-800 mb-2">IDE и Редакторы Кода</h3>
+                    <p class="text-sm text-apple-gray-500">VS Code • JetBrains Family • Vim/Neovim • Sublime Text • Другие</p>
+                </a>
+                
+                <!-- Item 3 -->
+                <a href="#terminals" class="feature-card glass-card rounded-2xl p-6 group">
+                    <div class="w-14 h-14 rounded-2xl bg-green-50 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <iconify-icon icon="lucide:terminal" class="text-3xl text-apple-green"></iconify-icon>
+                    </div>
+                    <h3 class="font-bold text-lg text-apple-gray-800 mb-2">Терминалы и Shell</h3>
+                    <p class="text-sm text-apple-gray-500">Windows Terminal • iTerm2 • Kitty • Bash • Zsh • Fish • PowerShell</p>
+                </a>
+                
+                <!-- Item 4 -->
+                <a href="#devtools" class="feature-card glass-card rounded-2xl p-6 group">
+                    <div class="w-14 h-14 rounded-2xl bg-orange-50 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <iconify-icon icon="lucide:wrench" class="text-3xl text-apple-orange"></iconify-icon>
+                    </div>
+                    <h3 class="font-bold text-lg text-apple-gray-800 mb-2">Инструменты Разработки</h3>
+                    <p class="text-sm text-apple-gray-500">Git • Docker • Пакмены • Базы данных • Postman • Браузеры</p>
+                </a>
+                
+                <!-- Item 5 -->
+                <a href="#cloud" class="feature-card glass-card rounded-2xl p-6 group">
+                    <div class="w-14 h-14 rounded-2xl bg-pink-50 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <iconify-icon icon="lucide:cloud" class="text-3xl text-apple-pink"></iconify-icon>
+                    </div>
+                    <h3 class="font-bold text-lg text-apple-gray-800 mb-2">Облака и DevOps</h3>
+                    <p class="text-sm text-apple-gray-500">AWS • Azure • GCP • CI/CD • Terraform • Kubernetes</p>
+                </a>
+                
+                <!-- Item 6 -->
+                <a href="#ai" class="feature-card glass-card rounded-2xl p-6 group">
+                    <div class="w-14 h-14 rounded-2xl bg-indigo-50 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <iconify-icon icon="lucide:brain" class="text-3xl text-apple-indigo"></iconify-icon>
+                    </div>
+                    <h3 class="font-bold text-lg text-apple-gray-800 mb-2">AI-инструменты</h3>
+                    <p class="text-sm text-apple-gray-500">GitHub Copilot • Cursor IDE • ChatGPT/Claude</p>
+                </a>
+                
+                <!-- Item 7 -->
+                <a href="#practice" class="feature-card glass-card rounded-2xl p-6 group lg:col-span-2">
+                    <div class="w-14 h-14 rounded-2xl bg-red-50 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <iconify-icon icon="lucide:graduation-cap" class="text-3xl text-apple-red"></iconify-icon>
+                    </div>
+                    <h3 class="font-bold text-lg text-apple-gray-800 mb-2">Практические Задания</h3>
+                    <p class="text-sm text-apple-gray-500">Аудит ПО • Подбор под задачу • Установка с выбором компонентов • Измерение характеристик</p>
+                </a>
+                
+                <!-- Item 8 -->
+                <a href="#template" class="feature-card glass-card rounded-2xl p-6 group">
+                    <div class="w-14 h-14 rounded-2xl bg-teal-50 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <iconify-icon icon="lucide:file-check" class="text-3xl text-apple-teal"></iconify-icon>
+                    </div>
+                    <h3 class="font-bold text-lg text-apple-gray-800 mb-2">Шаблон Отчёта</h3>
+                    <p class="text-sm text-apple-gray-500">Полная структура • Примеры заполнения • Критерии оценки</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider max-w-7xl mx-auto"></div>
+
+    <!-- SECTION 1: Operating Systems -->
+    <section id="systems" class="py-24 bg-apple-gray-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 text-apple-blue text-sm font-semibold mb-4">
+                    <iconify-icon icon="lucide:monitor"></iconify-icon>
+                    РАЗДЕЛ 1
+                </div>
+                <h2 class="text-4xl sm:text-5xl font-bold text-apple-gray-800 mb-4">Операционные Системы</h2>
+                <p class="text-xl text-apple-gray-500 max-w-3xl mx-auto">
+                    Выбор основной платформы разработки — фундамент вашего стека
+                </p>
+            </div>
+
+            <!-- Three OS Cards -->
+            <div class="grid lg:grid-cols-3 gap-8 mb-16">
+                <!-- Windows 11 -->
+                <div class="glass-card rounded-3xl overflow-hidden feature-card os-card-windows">
+                    <div class="p-8">
+                        <div class="flex items-center gap-4 mb-6">
+                            <iconify-icon icon="logos:microsoft-windows" class="text-5xl"></iconify-icon>
+                            <div>
+                                <h3 class="text-2xl font-bold text-apple-gray-800">Windows 11</h3>
+                                <p class="text-sm text-apple-gray-500">+ WSL2 для Linux</p>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-4 mb-6">
+                            <div class="flex items-start gap-3">
+                                <iconify-icon icon="lucide:check-circle" class="text-green-500 mt-1 text-lg flex-shrink-0"></iconify-icon>
+                                <div>
+                                    <div class="font-semibold text-apple-gray-800 text-sm">Совместимость</div>
+                                    <div class="text-xs text-apple-gray-500">Работает ВСЁ: игры, корпоративный софт, специфические приложения</div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start gap-3">
+                                <iconify-icon icon="lucide:check-circle" class="text-green-500 mt-1 text-lg flex-shrink-0"></iconify-icon>
+                                <div>
+                                    <div class="font-semibold text-apple-gray-800 text-sm">WSL2</div>
+                                    <div class="text-xs text-apple-gray-500">Полноценный Linux внутри Windows — Docker, bash, Unix-инструменты</div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start gap-3">
+                                <iconify-icon icon="lucide:check-circle" class="text-green-500 mt-1 text-lg flex-shrink-0"></iconify-icon>
+                                <div>
+                                    <div class="font-semibold text-apple-gray-800 text-sm">Visual Studio</div>
+                                    <div class="text-xs text-apple-gray-500">Лучшая IDE для .NET / C++ разработки</div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start gap-3">
+                                <iconify-icon icon="lucide:x-circle" class="text-red-500 mt-1 text-lg flex-shrink-0"></iconify-icon>
+                                <div>
+                                    <div class="font-semibold text-apple-gray-800 text-sm">Тяжёлый</div>
+                                    <div class="text-xs text-apple-gray-500">Много системных ресурсов, bloatware, обновления</div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start gap-3">
+                                <iconify-icon icon="lucide:x-circle" class="text-red-500 mt-1 text-lg flex-shrink-0"></iconify-icon>
+                                <div>
+                                    <div class="font-semibold text-apple-gray-800 text-sm">Bloatware</div>
+                                    <div class="text-xs text-apple-gray-500">Мусорные предустановленные приложения</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="pt-4 border-t border-black/5">
+                            <div class="text-xs font-semibold text-apple-gray-400 uppercase tracking-wide mb-2">Идеально для:</div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-xs font-medium">.NET/C#</span>
+                                <span class="px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-xs font-medium">Game Dev</span>
+                                <span class="px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-xs font-medium">Full-stack c WSL2</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- macOS -->
+                <div class="glass-card rounded-3xl overflow-hidden feature-card os-card-macos">
+                    <div class="p-8">
+                        <div class="flex items-center gap-4 mb-6">
+                            <iconify-icon icon="logos:apple" class="text-5xl"></iconify-icon>
+                            <div>
+                                <h3 class="text-2xl font-bold text-apple-gray-800">macOS</h3>
+                                <p class="text-sm text-apple-gray-500">Sonoma / Sequoia</p>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-4 mb-6">
+                            <div class="flex items-start gap-3">
+                                <iconify-icon icon="lucide:check-circle" class="text-green-500 mt-1 text-lg flex-shrink-0"></iconify-icon>
+                                <div>
+                                    <div class="font-semibold text-apple-gray-800 text-sm">UNIX основа</div>
+                                    <div class="text-xs text-apple-gray-500">Bash/Zsh, Git, Python из коробки — всё как на сервере</div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start gap-3">
+                                <iconify-icon icon="lucide:check-circle" class="text-green-500 mt-1 text-lg flex-shrink-0"></iconify-icon>
+                                <div>
+                                    <div class="font-semibold text-apple-gray-800 text-sm">Apple Silicon</div>
+                                    <div class="text-xs text-apple-gray-500">Быстро и энергоэффективно (M1/M2/M3/M4)</div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start gap-3">
+                                <iconify-icon icon="lucide:check-circle" class="text-green-500 mt-1 text-lg flex-shrink-0"></iconify-icon>
+                                <div>
+                                    <div class="font-semibold text-apple-gray-800 text-sm">Автономность</div>
+                                    <div class="text-xs text-apple-gray-500">15-20 часов реальной работы без розетки</div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start gap-3">
+                                <iconify-icon icon="lucide:check-circle" class="text-green-500 mt-1 text-lg flex-shrink-0"></iconify-icon>
+                                <div>
+                                    <div class="font-semibold text-apple-gray-800 text-sm">Homebrew</div>
+                                    <div class="text-xs text-apple-gray-500">Лучший пакетный менеджер — brew install anything</div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start gap-3">
+                                <iconify-icon icon="lucide:x-circle" class="text-red-500 mt-1 text-lg flex-shrink-0"></iconify-icon>
+                                <div>
+                                    <div class="font-semibold text-apple-gray-800 text-sm">Цена</div>
+                                    <div class="text-xs text-apple-gray-500">MacBook Pro M3: от $1999 ($3499 за топ)</div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start gap-3">
+                                <iconify-icon icon="lucide:x-circle" class="text-red-500 mt-1 text-lg flex-shrink-0"></iconify-icon>
+                                <div>
+                                    <div class="font-semibold text-apple-gray-800 text-sm">Закрытость</div>
+                                    <div class="text-xs text-apple-gray-500">Нельзя собрать свой Mac, нет апгрейда</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="pt-4 border-t border-black/5">
+                            <div class="text-xs font-semibold text-apple-gray-400 uppercase tracking-wide mb-2">Идеально для:</div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 rounded-full bg-gray-200 text-gray-700 text-xs font-medium">iOS/macOS Dev</span>
+                                <span class="px-3 py-1 rounded-full bg-gray-200 text-gray-700 text-xs font-medium">Web/Backend</span>
+                                <span class="px-3 py-1 rounded-full bg-gray-200 text-gray-700 text-xs font-medium">Ruby/Python</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Linux -->
+                <div class="glass-card rounded-3xl overflow-hidden feature-card os-card-linux">
+                    <div class="p-8">
+                        <div class="flex items-center gap-4 mb-6">
+                            <iconify-icon icon="logos:linux-tux" class="text-5xl"></iconify-icon>
+                            <div>
+                                <h3 class="text-2xl font-bold text-apple-gray-800">Linux</h3>
+                                <p class="text-sm text-apple-gray-500">Ubuntu / Fedora / Arch / Pop!</p>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-4 mb-6">
+                            <div class="flex items-start gap-3">
+                                <iconify-icon icon="lucide:check-circle" class="text-green-500 mt-1 text-lg flex-shrink-0"></iconify-icon>
+                                <div>
+                                    <div class="font-semibold text-apple-gray-800 text-sm">Бесплатный</div>
+                                    <div class="text-xs text-apple-gray-500">Полностью легальный, никаких лицензий</div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start gap-3">
+                                <iconify-icon icon="lucide:check-circle" class="text-green-500 mt-1 text-lg flex-shrink-0"></iconify-icon>
+                                <div>
+                                    <div class="font-semibold text-apple-gray-800 text-sm">Open Source</div>
+                                    <div class="text-xs text-apple-gray-500">Полный контроль над системой, можно изменить ВСЁ</div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start gap-3">
+                                <iconify-icon icon="lucide:check-circle" class="text-green-500 mt-1 text-lg flex-shrink-0"></iconify-icon>
+                                <div>
+                                    <div class="font-semibold text-apple-gray-800 text-sm">Docker нативно</div>
+                                    <div class="text-xs text-apple-gray-500">Быстрее чем на Mac/Win, работает из коробки</div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start gap-3">
+                                <iconify-icon icon="lucide:x-circle" class="text-red-500 mt-1 text-lg flex-shrink-0"></iconify-icon>
+                                <div>
+                                    <div class="font-semibold text-apple-gray-800 text-sm">Настройка</div>
+                                    <div class="text-xs text-apple-gray-500">Требует ручной работы и знаний системы</div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start gap-3">
+                                <iconify-icon icon="lucide:x-circle" class="text-red-500 mt-1 text-lg flex-shrink-0"></iconify-icon>
+                                <div>
+                                    <div class="font-semibold text-apple-gray-800 text-sm">Драйверы</div>
+                                    <div class="text-xs text-apple-gray-500">Проблемы совместимости с некоторым железом</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="pt-4 border-t border-black/5">
+                            <div class="text-xs font-semibold text-apple-gray-400 uppercase tracking-wide mb-2">Идеально для:</div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 rounded-full bg-orange-100 text-orange-700 text-xs font-medium">DevOps</span>
+                                <span class="px-3 py-1 rounded-full bg-orange-100 text-orange-700 text-xs font-medium">SysAdmin</span>
+                                <span class="px-3 py-1 rounded-full bg-orange-100 text-orange-700 text-xs font-medium">Энтузиасты</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Linux Distros Detail -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-bold text-apple-gray-800 mb-6 flex items-center gap-3">
+                    <iconify-icon icon="logos:linux-tux" class="text-apple-orange"></iconify-icon>
+                    Популярные дистрибутивы Linux
+                </h3>
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    <!-- Ubuntu -->
+                    <div class="glass-card rounded-2xl p-6 feature-card">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center gap-3">
+                                <iconify-icon icon="logos:ubuntu" class="text-3xl"></iconify-icon>
+                                <h4 class="font-bold text-lg text-apple-gray-800">Ubuntu</h4>
+                            </div>
+                            <span class="px-3 py-1 rounded-full bg-orange-100 text-orange-700 text-xs font-bold">ЛУЧШИЙ ДЛЯ НАЧИНАЮЩИХ</span>
+                        </div>
+                        <ul class="space-y-2 text-sm text-apple-gray-600">
+                            <li class="flex items-start gap-2"><iconify-icon icon="lucide:check" class="text-green-500 mt-0.5"></iconify-icon>Самое большое сообщество и документация</li>
+                            <li class="flex items-start gap-2"><iconify-icon icon="lucide:check" class="text-green-500 mt-0.5"></iconify-icon>LTS поддержка — обновления 5 лет</li>
+                            <li class="flex items-start gap-2"><iconify-icon icon="lucide:check" class="text-green-500 mt-0.5"></iconify-icon>Snap/Flatpak из коробки</li>
+                        </ul>
+                        <div class="mt-4 p-3 rounded-lg bg-apple-gray-100 font-mono text-xs">
+                            sudo apt install git python3 nodejs docker.io
+                        </div>
+                    </div>
+                    
+                    <!-- Fedora -->
+                    <div class="glass-card rounded-2xl p-6 feature-card">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center gap-3">
+                                <iconify-icon icon="logos:fedora" class="text-3xl"></iconify-icon>
+                                <h4 class="font-bold text-lg text-apple-gray-800">Fedora Workstation</h4>
+                            </div>
+                            <span class="px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-xs font-bold">СОВРЕМЕННЫЙ</span>
+                        </div>
+                        <ul class="space-y-2 text-sm text-apple-gray-600">
+                            <li class="flex items-start gap-2"><iconify-icon icon="lucide:check" class="text-green-500 mt-0.5"></iconify-icon>Свежий софт — последние версии пакетов</li>
+                            <li class="flex items-start gap-2"><iconify-icon icon="lucide:check" class="text-green-500 mt-0.5"></iconify-icon>Wayland по умолчанию</li>
+                            <li class="flex items-start gap-2"><iconify-icon icon="lucide:check" class="text-green-500 mt-0.5"></iconify-icon>Корпоративная поддержка Red Hat</li>
+                        </ul>
+                        <div class="mt-4 p-3 rounded-lg bg-apple-gray-100 font-mono text-xs">
+                            sudo dnf install @development-tools code
+                        </div>
+                    </div>
+                    
+                    <!-- Arch -->
+                    <div class="glass-card rounded-2xl p-6 feature-card">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center gap-3">
+                                <iconify-icon icon="simple-icons:archlinux" class="text-3xl text-blue-500"></iconify-icon>
+                                <h4 class="font-bold text-lg text-apple-gray-800">Arch Linux</h4>
+                            </div>
+                            <span class="px-3 py-1 rounded-full bg-indigo-100 text-indigo-700 text-xs font-bold">ДЛЯ ЭНТУЗИАСТОВ</span>
+                        </div>
+                        <ul class="space-y-2 text-sm text-apple-gray-600">
+                            <li class="flex items-start gap-2"><iconify-icon icon="lucide:check" class="text-green-500 mt-0.5"></iconify-icon>AUR — любой софт через Arch User Repository</li>
+                            <li class="flex items-start gap-2"><iconify-icon icon="lucide:check" class="text-green-500 mt-0.5"></iconify-icon>Rolling release — всегда свежие версии</li>
+                            <li class="flex items-start gap-2"><iconify-icon icon="lucide:check" class="text-green-500 mt-0.5"></iconify-icon>Лучшее понимание Linux</li>
+                        </ul>
+                        <div class="mt-4 p-3 rounded-lg bg-apple-gray-100 font-mono text-xs">
+                            yay -S visual-studio-code-bin google-chrome
+                        </div>
+                    </div>
+                    
+                    <!-- Pop!_OS -->
+                    <div class="glass-card rounded-2xl p-6 feature-card">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center gap-3">
+                                <iconify-icon icon="simple-icons:system76" class="text-3xl text-green-500"></iconify-icon>
+                                <h4 class="font-bold text-lg text-apple-gray-800">Pop!_OS</h4>
+                            </div>
+                            <span class="px-3 py-1 rounded-full bg-green-100 text-green-700 text-xs font-bold">ДИЗАЙНЕРОВ</span>
+                        </div>
+                        <ul class="space-y-2 text-sm text-apple-gray-600">
+                            <li class="flex items-start gap-2"><iconify-icon icon="lucide:check" class="text-green-500 mt-0.5"></iconify-icon>Auto-tiling окон — управление окнами из коробки</li>
+                            <li class="flex items-start gap-2"><iconify-icon icon="lucide:check" class="text-green-500 mt-0.5"></iconify-icon>Отличная поддержка GPU (NVIDIA/AMD)</li>
+                            <li class="flex items-start gap-2"><iconify-icon icon="lucide:check" class="text-green-500 mt-0.5"></iconify-icon>На основе Ubuntu LTS — стабильность</li>
+                        </ul>
+                        <div class="mt-4 p-3 rounded-lg bg-apple-gray-100 font-mono text-xs text-apple-gray-500">
+                            Идеально для: UI/UX дизайн, Web-разработка, Креативные задачи
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- WSL2 Section -->
+            <div class="glass-card rounded-3xl p-8 md:p-12">
+                <div class="flex items-center gap-4 mb-8">
+                    <iconify-icon icon="logos:microsoft-windows" class="text-4xl"></iconify-icon>
+                    <div>
+                        <h3 class="text-2xl font-bold text-apple-gray-800">WSL2 — Windows Subsystem for Linux</h3>
+                        <p class="text-apple-gray-500">Запускайте настоящий Linux внутри Windows</p>
+                    </div>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h4 class="font-semibold text-red-600 mb-4 flex items-center gap-2">
+                            <iconify-icon icon="lucide:x"></iconify-icon> ДО WSL2 (проблемы)
+                        </h4>
+                        <ul class="space-y-3 text-sm">
+                            <li class="flex items-start gap-2 text-apple-gray-600">
+                                <iconify-icon icon="lucide:alert-triangle" class="text-red-500 mt-0.5"></iconify-icon>
+                                Cygwin/MinGW — ломанный Linux
+                            </li>
+                            <li class="flex items-start gap-2 text-apple-gray-600">
+                                <iconify-icon icon="lucide:alert-triangle" class="text-red-500 mt-0.5"></iconify-icon>
+                                Git Bash — урезанный shell
+                            </li>
+                            <li class="flex items-start gap-2 text-apple-gray-600">
+                                <iconify-icon icon="lucide:alert-triangle" class="text-red-500 mt-0.5"></iconify-icon>
+                                Docker Toolbox — медленный
+                            </li>
+                            <li class="flex items-start gap-2 text-apple-gray-600">
+                                <iconify-icon icon="lucide:alert-triangle" class="text-red-500 mt-0.5"></iconify-icon>
+                                Проблемы с CRLF/LF
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-semibold text-green-600 mb-4 flex items-center gap-2">
+                            <iconify-icon icon="lucide:check"></iconify-icon> С WSL2 (решения)
+                        </h4>
+                        <ul class="space-y-3 text-sm">
+                            <li class="flex items-start gap-2 text-apple-gray-600">
+                                <iconify-icon icon="lucide:check-circle" class="text-green-500 mt-0.5"></iconify-icon>
+                                Настоящий Ubuntu/Debian/Fedora
+                            </li>
+                            <li class="flex items-start gap-2 text-apple-gray-600">
+                                <iconify-icon icon="lucide:check-circle" class="text-green-500 mt-0.5"></iconify-icon>
+                                Полный bash/zsh/fish
+                            </li>
+                            <li class="flex items-start gap-2 text-apple-gray-600">
+                                <iconify-icon icon="lucide:check-circle" class="text-green-500 mt-0.5"></iconify-icon>
+                                Docker Desktop с WSL2 backend — быстро!
+                            </li>
+                            <li class="flex items-start gap-2 text-apple-gray-600">
+                                <iconify-icon icon="lucide:check-circle" class="text-green-500 mt-0.5"></iconify-icon>
+                                Нативная работа с LF
+                            </li>
+                            <li class="flex items-start gap-2 text-apple-gray-600">
+                                <iconify-icon icon="lucide:check-circle" class="text-green-500 mt-0.5"></iconify-icon>
+                                Symlink'и работают!
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="mt-8 p-6 rounded-2xl bg-apple-gray-100">
+                    <h4 class="font-semibold text-apple-gray-800 mb-4">⚡ Быстрая установка WSL2:</h4>
+                    <div class="grid md:grid-cols-2 gap-4 font-mono text-sm">
+                        <div class="p-4 rounded-xl bg-white">
+                            <div class="text-xs text-apple-gray-400 mb-1"># Одна команда:</div>
+                            <div class="text-apple-gray-800">wsl --install</div>
+                        </div>
+                        <div class="p-4 rounded-xl bg-white">
+                            <div class="text-xs text-apple-gray-400 mb-1"># Выбор дистрибутива:</div>
+                            <div class="text-apple-gray-800">wsl --install -d Ubuntu-24.04</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider max-w-7xl mx-auto"></div>
+
+    <!-- SECTION 2: IDE and Editors -->
+    <section id="ide" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-50 text-apple-purple text-sm font-semibold mb-4">
+                    <iconify-icon icon="lucide:code-2"></iconify-icon>
+                    РАЗДЕЛ 2
+                </div>
+                <h2 class="text-4xl sm:text-5xl font-bold text-apple-gray-800 mb-4">IDE и Редакторы Кода</h2>
+                <p class="text-xl text-apple-gray-500 max-w-3xl mx-auto">
+                    Ваш главный инструмент — выберите wisely
+                </p>
+            </div>
+
+            <!-- Main 4 IDEs Grid -->
+            <div class="grid md:grid-cols-2 gap-8 mb-12">
+                <!-- VS Code -->
+                <div class="glass-card rounded-3xl overflow-hidden feature-card">
+                    <div class="bg-gradient-to-br from-blue-50 to-blue-100/50 p-8">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center gap-4">
+                                <iconify-icon icon="logos:visual-studio-code" class="text-5xl"></iconify-icon>
+                                <div>
+                                    <h3 class="text-2xl font-bold text-apple-gray-800">VS Code</h3>
+                                    <p class="text-sm text-apple-gray-500">Microsoft</p>
+                                </div>
+                            </div>
+                            <span class="px-4 py-2 rounded-full bg-green-500 text-white text-xs font-bold shadow-lg">MOST POPULAR</span>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-3 mb-6">
+                            <div class="flex items-center gap-2 text-sm">
+                                <iconify-icon icon="lucide:star" class="text-yellow-500"></iconify-icon>
+                                <span class="text-apple-gray-700">70,000+ расширений</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-sm">
+                                <iconify-icon icon="lucide:zap" class="text-blue-500"></iconify-icon>
+                                <span class="text-apple-gray-700">Запуск &lt; 2 сек</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-sm">
+                                <iconify-icon icon="lucide:globe" class="text-green-500"></iconify-icon>
+                                <span class="text-apple-gray-700">Cross-platform</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-sm">
+                                <iconify-icon icon="lucide:dollar-sign" class="text-emerald-500"></iconify-icon>
+                                <span class="text-apple-gray-700">Полностью бесплатен</span>
+                            </div>
+                        </div>
+                        
+                        <div class="p-4 rounded-xl bg-white/80">
+                            <div class="text-xs font-semibold text-apple-gray-500 uppercase mb-2">Must-Have расширения:</div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2 py-1 rounded bg-blue-100 text-blue-700 text-xs">GitLens</span>
+                                <span class="px-2 py-1 rounded bg-purple-100 text-purple-700 text-xs">GitHub Copilot</span>
+                                <span class="px-2 py-1 rounded bg-pink-100 text-pink-700 text-xs">Prettier</span>
+                                <span class="px-2 py-1 rounded bg-red-100 text-red-700 text-xs">Error Lens</span>
+                                <span class="px-2 py-1 rounded bg-orange-100 text-orange-700 text-xs">Material Icon</span>
+                                <span class="px-2 py-1 rounded bg-teal-100 text-teal-700 text-xs">Docker</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- JetBrains -->
+                <div class="glass-card rounded-3xl overflow-hidden feature-card">
+                    <div class="bg-gradient-to-br from-purple-50 to-purple-100/50 p-8">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center gap-4">
+                                <iconify-icon icon="logos:jetbrains" class="text-5xl"></iconify-icon>
+                                <div>
+                                    <h3 class="text-2xl font-bold text-apple-gray-800">JetBrains IDE</h3>
+                                    <p class="text-sm text-apple-gray-500">Семейство IDE</p>
+                                </div>
+                            </div>
+                            <span class="px-4 py-2 rounded-full pro-badge text-white text-xs font-bold shadow-lg">PROFESSIONAL</span>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-3 mb-6">
+                            <div class="flex items-center gap-2 text-sm">
+                                <iconify-icon icon="lucide:brain" class="text-purple-500"></iconify-icon>
+                                <span class="text-apple-gray-700">Лучший IntelliSense</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-sm">
+                                <iconify-icon icon="lucide:database" class="text-blue-500"></iconify-icon>
+                                <span class="text-apple-gray-700">Database интеграция</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-sm">
+                                <iconify-icon icon="lucide:git-branch" class="text-green-500"></iconify-icon>
+                                <span class="text-apple-gray-700">Безопасный refactoring</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-sm">
+                                <iconify-icon icon="lucide:graduation-cap" class="text-orange-500"></iconify-icon>
+                                <span class="text-apple-gray-700">Бесплатно для студентов!</span>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="p-3 rounded-xl bg-white/80 text-center">
+                                <div class="font-semibold text-apple-gray-800 text-sm">IntelliJ IDEA</div>
+                                <div class="text-xs text-apple-gray-500">Java/Kotlin/Android</div>
+                                <div className="text-xs text-apple-blue font-medium">$17.90/мес</div>
+                            </div>
+                            <div class="p-3 rounded-xl bg-white/80 text-center">
+                                <div class="font-semibold text-apple-gray-800 text-sm">WebStorm</div>
+                                <div class="text-xs text-apple-gray-500">JS/TS/React/Vue</div>
+                                <div className="text-xs text-apple-blue font-medium">$14.90/мес</div>
+                            </div>
+                            <div class="p-3 rounded-xl bg-white/80 text-center">
+                                <div class="font-semibold text-apple-gray-800 text-sm">PyCharm</div>
+                                <div class="text-xs text-apple-gray-500">Python/Data Science</div>
+                                <div className="text-xs text-apple-blue font-medium">$14.90/мес</div>
+                            </div>
+                            <div class="p-3 rounded-xl bg-white/80 text-center">
+                                <div class="font-semibold text-apple-gray-800 text-sm">GoLand</div>
+                                <div class="text-xs text-apple-gray-500">Go (Golang)</div>
+                                <div className="text-xs text-apple-blue font-medium">$14.90/мес</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Vim/Neovim -->
+                <div class="glass-card rounded-3xl overflow-hidden feature-card">
+                    <div class="bg-gradient-to-br from-green-50 to-green-100/50 p-8">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center gap-4">
+                                <iconify-icon icon="logos:vim" class="text-5xl"></iconify-icon>
+                                <div>
+                                    <h3 class="text-2xl font-bold text-apple-gray-800">Vim / Neovim</h3>
+                                    <p class="text-sm text-apple-gray-500">Modal редактор</p>
+                                </div>
+                            </div>
+                            <span class="px-4 py-2 rounded-full bg-green-600 text-white text-xs font-bold shadow-lg">HACKER'S CHOICE</span>
+                        </div>
+                        
+                        <div class="space-y-4 mb-6">
+                            <div class="flex items-start gap-3">
+                                <iconify-icon icon="lucide:zap" class="text-green-600 mt-1"></iconify-icon>
+                                <div>
+                                    <div class="font-semibold text-apple-gray-800 text-sm">Мгновенный запуск</div>
+                                    <div class="text-xs text-apple-gray-500">Открывается быстрее, чем вы моргнёте</div>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <iconify-icon icon="lucide:keyboard" class="text-green-600 mt-1"></iconify-icon>
+                                <div>
+                                    <div class="font-semibold text-apple-gray-800 text-sm">Modal editing</div>
+                                    <div class="text-xs text-apple-gray-500">Не отрывать руки от home row</div>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <iconify-icon icon="lucide:puzzle" class="text-green-600 mt-1"></iconify-icon>
+                                <div>
+                                    <div class="font-semibold text-apple-gray-800 text-sm">Полная кастомизация</div>
+                                    <div class="text-xs text-apple-gray-500">10,000+ плагинов через Lua</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="p-4 rounded-xl bg-white/80">
+                            <div class="text-xs font-semibold text-apple-gray-500 uppercase mb-2">Кривая обучения: 2-4 недели</div>
+                            <div class="text-xs text-apple-gray-600">vimtutor → 2-4 недели для продуктивности</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Sublime Text -->
+                <div class="glass-card rounded-3xl overflow-hidden feature-card">
+                    <div class="bg-gradient-to-br from-orange-50 to-orange-100/50 p-8">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center gap-4">
+                                <iconify-icon icon="logos:sublime-text" class="text-5xl"></iconify-icon>
+                                <div>
+                                    <h3 class="text-2xl font-bold text-apple-gray-800">Sublime Text</h3>
+                                    <p class="text-sm text-apple-gray-500">Минималистичный</p>
+                                </div>
+                            </div>
+                            <span class="px-4 py-2 rounded-full bg-orange-500 text-white text-xs font-bold shadow-lg">MINIMALIST</span>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-3 mb-6">
+                            <div class="flex items-center gap-2 text-sm">
+                                <iconify-icon icon="lucide:zap" class="text-orange-500"></iconify-icon>
+                                <span class="text-apple-gray-700">Молниеносный</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-sm">
+                                <iconify-icon icon="lucide:minimize-2" class="text-orange-500"></iconify-icon>
+                                <span class="text-apple-gray-700">Миниатюрный UI</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-sm">
+                                <iconify-icon icon="lucide:mouse-pointer-click" class="text-orange-500"></iconify-icon>
+                                <span class="text-apple-gray-700">Multiple Selections</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-sm">
+                                <iconify-icon icon="lucide:palette" class="text-orange-500"></iconify-icon>
+                                <span class="text-apple-gray-700">Красивый UI</span>
+                            </div>
+                        </div>
+                        
+                        <div class="p-4 rounded-xl bg-white/80">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <div class="font-semibold text-apple-gray-800 text-sm">$99 (бесконечный триал)</div>
+                                    <div class="text-xs text-apple-gray-500">Для быстрых правок, огромные файлы</div>
+                                </div>
+                                <iconify-icon icon="lucide:star" class="text-2xl text-yellow-500"></iconify-icon>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Other Editors -->
+            <div class="glass-card rounded-2xl p-8">
+                <h3 class="text-xl font-bold text-apple-gray-800 mb-6 flex items-center gap-3">
+                    <iconify-icon icon="lucide:edit-3" class="text-apple-gray-400"></iconify-icon>
+                    Другие редакторы (для ознакомления)
+                </h3>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="p-4 rounded-xl bg-apple-gray-50 border border-apple-gray-200 opacity-60">
+                        <div class="flex items-center gap-2 mb-2">
+                            <iconify-icon icon="logos:atom" class="text-xl"></iconify-icon>
+                            <span class="font-semibold text-apple-gray-700">Atom</span>
+                            <span class="ml-auto px-2 py-0.5 rounded bg-red-100 text-red-600 text-xs">DEPRECATED</span>
+                        </div>
+                        <p class="text-xs text-apple-gray-500">Прекратил разработку в декабре 2022. Переходите на VS Code.</p>
+                    </div>
+                    
+                    <div class="p-4 rounded-xl bg-apple-gray-50 border border-apple-gray-200">
+                        <div class="flex items-center gap-2 mb-2">
+                            <iconify-icon icon="simple-icons:notepad-plus-plus" class="text-xl text-green-600"></iconify-icon>
+                            <span class="font-semibold text-apple-gray-700">Notepad++</span>
+                        </div>
+                        <p class="text-xs text-apple-gray-500">Лёгкий, быстрый, 100+ языков. Только Windows. Бесплатен.</p>
+                    </div>
+                    
+                    <div class="p-4 rounded-xl bg-apple-gray-50 border border-apple-gray-200">
+                        <div class="flex items-center gap-2 mb-2">
+                            <iconify-icon icon="simple-icons:geany" class="text-xl text-blue-600"></iconify-icon>
+                            <span class="font-semibold text-apple-gray-700">Geany</span>
+                            <span class="ml-auto px-2 py-0.5 rounded bg-green-100 text-green-600 text-xs">&lt;10MB RAM</span>
+                        </div>
+                        <p class="text-xs text-apple-gray-500">Super лёгкий IDE. Встроенный терминал. Для слабых машин.</p>
+                    </div>
+                    
+                    <div class="p-4 rounded-xl bg-apple-gray-50 border border-apple-gray-200">
+                        <div class="flex items-center gap-2 mb-2">
+                            <iconify-icon icon="simple-icons:gnuemacs" class="text-xl text-purple-600"></iconify-icon>
+                            <span class="font-semibold text-apple-gray-700">Emacs</span>
+                        </div>
+                        <p class="text-xs text-apple-gray-500">Легендарный редактор. Настраивается ПОД ВСЕ (email, IRC, IDE, OS).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider max-w-7xl mx-auto"></div>
+
+    <!-- SECTION 3: Terminals and Shells -->
+    <section id="terminals" class="py-24 bg-apple-gray-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-50 text-green-600 text-sm font-semibold mb-4">
+                    <iconify-icon icon="lucide:terminal"></iconify-icon>
+                    РАЗДЕЛ 3
+                </div>
+                <h2 class="text-4xl sm:text-5xl font-bold text-apple-gray-800 mb-4">Терминалы и Shell</h2>
+                <p class="text-xl text-apple-gray-500 max-w-3xl mx-auto">
+                    Командная строка — ваш лучший друг
+                </p>
+            </div>
+
+            <!-- Terminal Emulators by OS -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-bold text-apple-gray-800 mb-6">Эмуляторы терминала по ОС</h3>
+                
+                <div class="grid md:grid-cols-3 gap-6">
+                    <!-- Windows -->
+                    <div class="glass-card rounded-2xl p-6 feature-card">
+                        <div class="flex items-center gap-3 mb-4 pb-4 border-b border-apple-gray-200">
+                            <iconify-icon icon="logos:microsoft-windows" class="text-2xl"></iconify-icon>
+                            <h4 class="font-bold text-lg text-apple-gray-800">Windows</h4>
+                            <span class="ml-auto px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-xs font-bold">ОБЯЗАТЕЛЕН</span>
+                        </div>
+                        <div class="p-4 rounded-xl bg-blue-50 mb-4">
+                            <div class="font-semibold text-apple-gray-800 mb-2">Windows Terminal</div>
+                            <ul class="space-y-1 text-sm text-apple-gray-600">
+                                <li>• Темы, прозрачность, вкладки (WSL, PowerShell, CMD)</li>
+                                <li>• GPU-accelerated рендеринг</li>
+                                <li>• Profiles для shell'ов</li>
+                            </ul>
+                        </div>
+                        <div class="p-3 rounded-lg bg-apple-gray-100 font-mono text-xs">
+                            winget install Microsoft.WindowsTerminal
+                        </div>
+                    </div>
+                    
+                    <!-- macOS -->
+                    <div class="glass-card rounded-2xl p-6 feature-card">
+                        <div class="flex items-center gap-3 mb-4 pb-4 border-b border-apple-gray-200">
+                            <iconify-icon icon="logos:apple" class="text-2xl"></iconify-icon>
+                            <h4 class="font-bold text-lg text-apple-gray-800">macOS</h4>
+                            <span class="ml-auto px-3 py-1 rounded-full bg-green-100 text-green-700 text-xs font-bold">BEST IN CLASS</span>
+                        </div>
+                        <div class="p-4 rounded-xl bg-gray-50 mb-4">
+                            <div class="font-semibold text-apple-gray-800 mb-2">iTerm2</div>
+                            <ul class="space-y-1 text-sm text-apple-gray-600">
+                                <li>• Split панели</li>
+                                <li>• Instant search (Cmd+F)</li>
+                                <li>• Copy без мыши</li>
+                                <li>• Shell integration</li>
+                            </ul>
+                        </div>
+                        <div class="p-3 rounded-lg bg-apple-gray-100 font-mono text-xs">
+                            brew install --cask iterm2
+                        </div>
+                    </div>
+                    
+                    <!-- Linux -->
+                    <div class="glass-card rounded-2xl p-6 feature-card">
+                        <div class="flex items-center gap-3 mb-4 pb-4 border-b border-apple-gray-200">
+                            <iconify-icon icon="logos:linux-tux" class="text-2xl"></iconify-icon>
+                            <h4 class="font-bold text-lg text-apple-gray-800">Linux</h4>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="p-3 rounded-xl bg-green-50">
+                                <div class="font-semibold text-apple-gray-800 text-sm">Kitty</div>
+                                <div class="text-xs text-apple-gray-600">GPU-accelerated, tiling support</div>
+                            </div>
+                            <div class="p-3 rounded-xl bg-purple-50">
+                                <div class="font-semibold text-apple-gray-800 text-sm">Alacritty</div>
+                                <div class="text-xs text-apple-gray-600">Самый быстрый, написан на Rust</div>
+                            </div>
+                            <div class="p-3 rounded-xl bg-orange-50">
+                                <div class="font-semibold text-apple-gray-800 text-sm">Tilix</div>
+                                <div class="text-xs text-apple-gray-600">Tiling terminal, Quake-style dropdown</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Shells Comparison -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-bold text-apple-gray-800 mb-6">Shell: Bash vs Zsh vs Fish</h3>
+                
+                <div class="grid md:grid-cols-3 gap-6">
+                    <!-- Bash -->
+                    <div class="glass-card rounded-2xl p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h4 class="font-bold text-xl text-apple-gray-800">Bash</h4>
+                            <span class="px-3 py-1 rounded-full bg-apple-gray-200 text-apple-gray-600 text-xs font-bold">СТАНДАРТ</span>
+                        </div>
+                        <div class="space-y-3 mb-4">
+                            <div class="flex items-start gap-2 text-sm">
+                                <iconify-icon icon="lucide:check-circle" class="text-green-500 mt-0.5"></iconify-icon>
+                                <span class="text-apple-gray-600">Совместимость: работает ВЕЗДЕ и ВЕГДЕ</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-sm">
+                                <iconify-icon icon="lucide:check-circle" class="text-green-500 mt-0.5"></iconify-icon>
+                                <span class="text-apple-gray-600">Скрипты работают везде</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-sm">
+                                <iconify-icon icon="lucide:check-circle" class="text-green-500 mt-0.5"></iconify-icon>
+                                <span class="text-apple-gray-600">Простота — легко понять основы</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-sm">
+                                <iconify-icon icon="lucide:x-circle" class="text-red-500 mt-0.5"></iconify-icon>
+                                <span class="text-apple-gray-600">Функционально ограничен vs Zsh/Fish</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-sm">
+                                <iconify-icon icon="lucide:x-circle" class="text-red-500 mt-0.5"></iconify-icon>
+                                <span class="text-apple-gray-600">Автодополнение базовое</span>
+                            </div>
+                        </div>
+                        <div class="text-xs text-apple-gray-400 pt-3 border-t border-apple-gray-200">
+                            По умолчанию: Ubuntu/Debian • WSL • macOS (до Catalina)
+                        </div>
+                    </div>
+                    
+                    <!-- Zsh -->
+                    <div class="glass-card rounded-2xl p-6 border-2 border-blue-300">
+                        <div class="flex items-center justify-between mb-4">
+                            <h4 class="font-bold text-xl text-apple-gray-800">Zsh</h4>
+                            <span class="px-3 py-1 rounded-full bg-blue-500 text-white text-xs font-bold">РЕКОМЕНДУЕТСЯ!</span>
+                        </div>
+                        <div class="space-y-3 mb-4">
+                            <div class="flex items-start gap-2 text-sm">
+                                <iconify-icon icon="lucide:check-circle" class="text-green-500 mt-0.5"></iconify-icon>
+                                <span class="text-apple-gray-600">Расширенное globbing (**/*.py рекурсивно)</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-sm">
+                                <iconify-icon icon="lucide:check-circle" class="text-green-500 mt-0.5"></iconify-icon>
+                                <span class="text-apple-gray-600">Smart tab completion (меню, fuzzy поиск)</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-sm">
+                                <iconify-icon icon="lucide:check-circle" class="text-green-500 mt-0.5"></iconify-icon>
+                                <span class="text-apple-gray-600">Powerlevel10k тема — самая красивая</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-sm">
+                                <iconify-icon icon="lucide:check-circle" class="text-green-500 mt-0.5"></iconify-icon>
+                                <span class="text-apple-gray-600">Oh My Zsh — 300+ плагинов</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-sm">
+                                <iconify-icon icon="lucide:check-circle" class="text-green-500 mt-0.5"></iconify-icon>
+                                <span class="text-apple-gray-600">Spelling correction автоправка</span>
+                            </div>
+                        </div>
+                        <div class="p-3 rounded-lg bg-blue-50 font-mono text-xs">
+                            sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+                        </div>
+                    </div>
+                    
+                    <!-- Fish -->
+                    <div class="glass-card rounded-2xl p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h4 class="font-bold text-xl text-apple-gray-800">Fish</h4>
+                            <span class="px-3 py-1 rounded-full bg-green-500 text-white text-xs font-bold">FRIENDLY!</span>
+                        </div>
+                        <div class="space-y-3 mb-4">
+                            <div class="flex items-start gap-2 text-sm">
+                                <iconify-icon icon="lucide:check-circle" class="text-green-500 mt-0.5"></iconify-icon>
+                                <span class="text-apple-gray-600">Autosuggestions — подсказки как в IDE</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-sm">
+                                <iconify-icon icon="lucide:check-circle" class="text-green-500 mt-0.5"></iconify-icon>
+                                <span class="text-apple-gray-600">Syntax highlighting при вводе</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-sm">
+                                <iconify-icon icon="lucide:check-circle" class="text-green-500 mt-0.5"></iconify-icon>
+                                <span class="text-apple-gray-600">Web-based config (fish_config)</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-sm">
+                                <iconify-icon icon="lucide:check-circle" class="text-green-500 mt-0.5"></iconify-icon>
+                                <span class="text-apple-gray-600">Tab completion из примеров</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-sm">
+                                <iconify-icon icon="lucide:alert-triangle" class="text-yellow-500 mt-0.5"></iconify-icon>
+                                <span class="text-apple-gray-600">⚠️ NOT POSIX compatible</span>
+                            </div>
+                        </div>
+                        <div class="p-3 rounded-lg bg-green-50 font-mono text-xs">
+                            brew install fish<br><span class="text-apple-gray-400">Идеально для интерактивного daily use</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PowerShell Note -->
+            <div class="glass-card rounded-2xl p-6 bg-gradient-to-r from-blue-50 to-cyan-50">
+                <div class="flex items-start gap-4">
+                    <iconify-icon icon="logos:powershell" class="text-3xl flex-shrink-0"></iconify-icon>
+                    <div>
+                        <h4 class="font-bold text-lg text-apple-gray-800 mb-2">PowerShell 7 — Cross-Platform</h4>
+                        <p class="text-sm text-apple-gray-600 mb-3">
+                            Object-Oriented Pipeline: вместо текста — объекты .NET передаются между командами.
+                            Работает на macOS и Linux! Отлично для Azure/OFFICE автоматизации.
+                        </p>
+                        <div class="grid md:grid-cols-2 gap-3 font-mono text-xs">
+                            <div class="p-2 rounded bg-white">Get-Process | Sort-Object CPU -Descending | Select-Object -First 10</div>
+                            <div class="p-2 rounded bg-white text-apple-gray-400"># Windows: winget install Microsoft.PowerShell</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider max-w-7xl mx-auto"></div>
+
+    <!-- SECTION 4: Development Tools -->
+    <section id="devtools" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-50 text-apple-orange text-sm font-semibold mb-4">
+                    <iconify-icon icon="lucide:wrench"></iconify-icon>
+                    РАЗДЕЛ 4
+                </div>
+                <h2 class="text-4xl sm:text-5xl font-bold text-apple-gray-800 mb-4">Инструменты Разработки</h2>
+                <p class="text-xl text-apple-gray-500 max-w-3xl mx-auto">
+                    Git, Docker, пакмены, базы данных, API тестирование, браузеры
+                </p>
+            </div>
+
+            <!-- Tools Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                <!-- Git -->
+                <div class="glass-card rounded-2xl p-6 feature-card">
+                    <div class="flex items-center gap-3 mb-4">
+                        <iconify-icon icon="logos:git-icon" class="text-3xl"></iconify-icon>
+                        <div>
+                            <h3 class="font-bold text-lg text-apple-gray-800">Git и Клиенты</h3>
+                            <span class="text-xs text-red-500 font-semibold">ОБЯЗАТЕЛЕН!</span>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="p-3 rounded-xl bg-orange-50 border-l-4 border-orange-500">
+                            <div class="font-semibold text-apple-gray-800 text-sm">Git CLI</div>
+                            <div class="text-xs text-apple-gray-600 mb-2">РЕКОМЕНДУЕТСЯ! Фундаментальный навык</div>
+                            <div class="text-xs text-apple-gray-500">Native & Powerful • Works Everywhere • Speed & Efficiency</div>
+                        </div>
+                        
+                        <div class="p-3 rounded-xl bg-apple-gray-50">
+                            <div class="font-semibold text-apple-gray-800 text-sm">GUI Клиенты</div>
+                            <div class="grid grid-cols-2 gap-2 mt-2 text-xs">
+                                <div class="flex items-center gap-1"><iconify-icon icon="logos:github-desktop" class="text-sm"></iconify-icon> GitHub Desktop</div>
+                                <div class="flex items-center gap-1"><iconify-icon icon="logos:gitkraken" class="text-sm"></iconify-icon> GitKraken (Pro)</div>
+                                <div class="flex items-center gap-1"><iconify-icon icon="logos:sourcetree" class="text-sm"></iconify-icon> SourceTree</div>
+                                <div class="flex items-center gap-1"><iconify-icon icon="logos:lazygit" class="text-sm"></iconify-icon> LazyGit (TUI)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Docker -->
+                <div class="glass-card rounded-2xl p-6 feature-card">
+                    <div class="flex items-center gap-3 mb-4">
+                        <iconify-icon icon="logos:docker-icon" class="text-3xl"></iconify-icon>
+                        <div>
+                            <h3 class="font-bold text-lg text-apple-gray-800">Docker</h3>
+                            <span class="text-xs text-red-500 font-semibold">ОБЯЗАТЕЛЕН!</span>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="p-3 rounded-xl bg-cyan-50">
+                            <div class="font-semibold text-apple-gray-800 text-sm mb-2">Why Docker?</div>
+                            <ul class="space-y-1 text-xs text-apple-gray-600">
+                                <li>✓ Identical Environments (dev→staging→prod)</li>
+                                <li>✓ Isolated Dependencies</li>
+                                <li>✓ Microservices Ready</li>
+                                <li>✓ Quick Deployment (~38 мин vs часы)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="p-3 rounded-lg bg-apple-gray-100 font-mono text-xs space-y-1">
+                            <div>docker pull nginx</div>
+                            <div>docker run -d -p 8080:80 nginx</div>
+                            <div>docker ps -a</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Package Managers -->
+                <div class="glass-card rounded-2xl p-6 feature-card">
+                    <div class="flex items-center gap-3 mb-4">
+                        <iconify-icon icon="lucide:package" class="text-3xl text-apple-orange"></iconify-icon>
+                        <h3 class="font-bold text-lg text-apple-gray-800">Пакетные Менеджеры</h3>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="p-3 rounded-xl bg-orange-50">
+                            <div class="font-semibold text-apple-gray-800 text-sm">Homebrew (macOS/Linux)</div>
+                            <div class="text-xs text-apple-gray-600 mt-1">Самый популярный • 50,000+ пакетов</div>
+                            <div class="font-mono text-xs mt-2 bg-white p-2 rounded">brew install node python go rust</div>
+                        </div>
+                        
+                        <div class="p-3 rounded-xl bg-blue-50">
+                            <div class="font-semibold text-apple-gray-800 text-sm">Winget (Windows 10/11)</div>
+                            <div class="text-xs text-apple-gray-600 mt-1">Built-in • Official Microsoft</div>
+                            <div class="font-mono text-xs mt-2 bg-white p-2 rounded">winget install VSCode Git Docker</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Databases -->
+                <div class="glass-card rounded-2xl p-6 feature-card">
+                    <div class="flex items-center gap-3 mb-4">
+                        <iconify-icon icon="lucide:database" class="text-3xl text-apple-purple"></iconify-icon>
+                        <h3 class="font-bold text-lg text-apple-gray-800">Базы Данных</h3>
+                    </div>
+                    
+                    <div class="space-y-2 text-sm">
+                        <div class="flex items-center justify-between p-2 rounded bg-apple-gray-50">
+                            <span class="text-apple-gray-700">PostgreSQL</span>
+                            <span class="text-xs text-apple-gray-500">Most popular for web dev</span>
+                        </div>
+                        <div class="flex items-center justify-between p-2 rounded bg-apple-gray-50">
+                            <span class="text-apple-gray-700">MySQL</span>
+                            <span class="text-xs text-apple-gray-500">Legacy systems</span>
+                        </div>
+                        <div class="flex items-center justify-between p-2 rounded bg-apple-gray-50">
+                            <span class="text-apple-gray-700">MongoDB</span>
+                            <span class="text-xs text-apple-gray-500">NoSQL document DB</span>
+                        </div>
+                        <div class="flex items-center justify-between p-2 rounded bg-apple-gray-50">
+                            <span class="text-apple-gray-700">Redis</span>
+                            <span class="text-xs text-apple-gray-500">In-memory cache</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-3 p-2 rounded bg-blue-50 text-xs text-blue-700">
+                        💡 GUI Client: DBeaver (FREE, Universal) или DataGrip (JetBrains)
+                    </div>
+                </div>
+                
+                <!-- API Testing -->
+                <div class="glass-card rounded-2xl p-6 feature-card">
+                    <div class="flex items-center gap-3 mb-4">
+                        <iconify-icon icon="lucide:send" class="text-3xl text-apple-pink"></iconify-icon>
+                        <h3 class="font-bold text-lg text-apple-gray-800">API Testing</h3>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="p-3 rounded-xl bg-orange-100">
+                            <div class="font-semibold text-apple-gray-800 text-sm">Postman</div>
+                            <div class="text-xs text-apple-gray-600">Industry Standard</div>
+                            <div class="text-xs text-apple-gray-500 mt-1">Collections • Mock Servers • Auto Docs</div>
+                        </div>
+                        <div class="p-3 rounded-xl bg-purple-100">
+                            <div class="font-semibold text-apple-gray-800 text-sm">Insomnia</div>
+                            <div class="text-xs text-apple-gray-600">Modern & Clean</div>
+                            <div class="text-xs text-apple-gray-500 mt-1">GraphQL Support • Lightweight</div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-3 p-2 rounded bg-green-50 text-xs text-green-700">
+                        ⚡ Thunder Client (VS Code Extension) — FREE, works offline, no registration
+                    </div>
+                </div>
+                
+                <!-- Browsers -->
+                <div class="glass-card rounded-2xl p-6 feature-card">
+                    <div class="flex items-center gap-3 mb-4">
+                        <iconify-icon icon="logos:chrome" class="text-3xl"></iconify-icon>
+                        <h3 class="font-bold text-lg text-apple-gray-800">Браузеры</h3>
+                    </div>
+                    
+                    <div class="space-y-2 text-sm">
+                        <div class="flex items-center justify-between p-2 rounded bg-blue-50">
+                            <span class="font-medium text-apple-gray-800">Chrome</span>
+                            <span class="px-2 py-0.5 rounded bg-blue-500 text-white text-xs">PRIMARY</span>
+                        </div>
+                        <div class="text-xs text-apple-gray-500 ml-2">Best DevTools, huge ecosystem</div>
+                        
+                        <div class="flex items-center justify-between p-2 rounded bg-orange-50">
+                            <span class="font-medium text-apple-gray-800">Firefox</span>
+                            <span class="px-2 py-0.5 rounded bg-orange-500 text-white text-xs">TESTING</span>
+                        </div>
+                        <div class="text-xs text-apple-gray-500 ml-2">Unique tools, Accessibility, Grid inspector</div>
+                        
+                        <div class="flex items-center justify-between p-2 rounded bg-apple-gray-50">
+                            <span class="font-medium text-apple-gray-800">Safari</span>
+                            <span class="px-2 py-0.5 rounded bg-apple-gray-600 text-white text-xs">REQUIRED</span>
+                        </div>
+                        <div class="text-xs text-apple-gray-500 ml-2">iOS testing, Apple ecosystem</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider max-w-7xl mx-auto"></div>
+
+    <!-- SECTION 5: Cloud & DevOps -->
+    <section id="cloud" class="py-24 bg-apple-gray-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-pink-50 text-apple-pink text-sm font-semibold mb-4">
+                    <iconify-icon icon="lucide:cloud"></iconify-icon>
+                    РАЗДЕЛ 5
+                </div>
+                <h2 class="text-4xl sm:text-5xl font-bold text-apple-gray-800 mb-4">Облака и DevOps</h2>
+                <p class="text-xl text-apple-gray-500 max-w-3xl mx-auto">
+                    AWS, Azure, GCP, CI/CD, Infrastructure as Code
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Cloud CLI -->
+                <div class="glass-card rounded-2xl p-8">
+                    <h3 class="text-xl font-bold text-apple-gray-800 mb-6 flex items-center gap-3">
+                        <iconify-icon icon="lucide:terminal" class="text-apple-blue"></iconify-icon>
+                        Cloud CLI Tools
+                    </h3>
+                    
+                    <div class="space-y-4">
+                        <div class="p-4 rounded-xl bg-orange-50 border-l-4 border-orange-500">
+                            <div class="font-bold text-apple-gray-800">AWS CLI</div>
+                            <div class="text-sm text-apple-gray-600">Amazon Web Services command-line interface</div>
+                            <div class="mt-2 flex flex-wrap gap-2">
+                                <span class="px-2 py-1 rounded bg-white text-xs">EC2</span>
+                                <span class="px-2 py-1 rounded bg-white text-xs">S3</span>
+                                <span class="px-2 py-1 rounded bg-white text-xs">Lambda</span>
+                            </div>
+                        </div>
+                        
+                        <div class="p-4 rounded-xl bg-blue-50 border-l-4 border-blue-500">
+                            <div class="font-bold text-apple-gray-800">Azure CLI</div>
+                            <div class="text-sm text-apple-gray-600">Microsoft Azure cross-platform CLI</div>
+                            <div class="mt-2 flex flex-wrap gap-2">
+                                <span class="px-2 py-1 rounded bg-white text-xs">VMs</span>
+                                <span class="px-2 py-1 rounded bg-white text-xs">App Service</span>
+                                <span class="px-2 py-1 rounded bg-white text-xs">Functions</span>
+                            </div>
+                        </div>
+                        
+                        <div class="p-4 rounded-xl bg-teal-50 border-l-4 border-teal-500">
+                            <div class="font-bold text-apple-gray-800">Google Cloud CLI</div>
+                            <div class="text-sm text-apple-gray-600">Google Cloud Platform tools</div>
+                            <div class="mt-2 flex flex-wrap gap-2">
+                                <span class="px-2 py-1 rounded bg-white text-xs">Compute Engine</span>
+                                <span class="px-2 py-1 rounded bg-white text-xs">Cloud Run</span>
+                            </div>
+                        </div>
+                        
+                        <div class="p-4 rounded-xl bg-green-50 border-l-4 border-green-500">
+                            <div class="font-bold text-apple-gray-800">Terraform</div>
+                            <div class="text-sm text-apple-gray-600">Infrastructure as Code for multi-cloud</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- CI/CD -->
+                <div class="glass-card rounded-2xl p-8">
+                    <h3 class="text-xl font-bold text-apple-gray-800 mb-6 flex items-center gap-3">
+                        <iconify-icon icon="lucide:refresh-cw" class="text-apple-purple"></iconify-icon>
+                        CI/CD Pipelines
+                    </h3>
+                    
+                    <div class="space-y-4">
+                        <div class="p-4 rounded-xl bg-gray-800 text-white">
+                            <div class="flex items-center gap-3 mb-2">
+                                <iconify-icon icon="logos:github-actions" class="text-2xl"></iconify-icon>
+                                <div class="font-bold">GitHub Actions</div>
+                            </div>
+                            <div class="text-sm text-gray-300">Automate workflows directly from GitHub</div>
+                            <div class="mt-2 flex gap-2">
+                                <span class="px-2 py-1 rounded bg-gray-700 text-xs">YAML</span>
+                                <span class="px-2 py-1 rounded bg-gray-700 text-xs">Free Tier</span>
+                                <span class="px-2 py-1 rounded bg-gray-700 text-xs">.github/workflows</span>
+                            </div>
+                        </div>
+                        
+                        <div class="p-4 rounded-xl bg-orange-50 border-l-4 border-orange-500">
+                            <div class="font-bold text-apple-gray-800">GitLab CI/CD</div>
+                            <div class="text-sm text-apple-gray-600">Integrated CI/CD in GitLab platform</div>
+                            <div class="text-xs text-apple-gray-500 mt-1">.gitlab-ci.yml • Auto DevOps</div>
+                        </div>
+                        
+                        <div class="p-4 rounded-xl bg-blue-50 border-l-4 border-blue-500">
+                            <div class="font-bold text-apple-gray-800">Jenkins</div>
+                            <div class="text-sm text-apple-gray-600">Open source automation server, highly customizable</div>
+                        </div>
+                        
+                        <div class="p-4 rounded-xl bg-purple-50 border-l-4 border-purple-500">
+                            <div class="font-bold text-apple-gray-800">Docker Compose</div>
+                            <div class="text-sm text-apple-gray-600">Multi-container orchestration for local development</div>
+                        </div>
+                        
+                        <div class="p-4 rounded-xl bg-green-50 border-l-4 border-green-500">
+                            <div class="font-bold text-apple-gray-800">Kubernetes</div>
+                            <div class="text-sm text-apple-gray-600">Container orchestration for production workloads</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider max-w-7xl mx-auto"></div>
+
+    <!-- SECTION 6: AI Tools -->
+    <section id="ai" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 text-apple-indigo text-sm font-semibold mb-4">
+                    <iconify-icon icon="lucide:brain"></iconify-icon>
+                    РАЗДЕЛ 6
+                </div>
+                <h2 class="text-4xl sm:text-5xl font-bold text-apple-gray-800 mb-4">AI-инструменты для Разработчиков</h2>
+                <p class="text-xl text-apple-gray-500 max-w-3xl mx-auto">
+                    Ускорьте разработку с помощью искусственного интеллекта
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <!-- GitHub Copilot -->
+                <div class="glass-card rounded-2xl overflow-hidden feature-card">
+                    <div class="bg-gradient-to-br from-gray-800 to-gray-900 p-6 text-white">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center gap-3">
+                                <iconify-icon icon="logos:copilot" class="text-3xl"></iconify-icon>
+                                <h3 class="font-bold text-xl">GitHub Copilot</h3>
+                            </div>
+                            <span class="px-3 py-1 rounded-full bg-green-500 text-white text-xs font-bold">$10/мес</span>
+                        </div>
+                        <p class="text-sm text-gray-300">AI pair programmer that suggests code completions</p>
+                        <div class="mt-4 flex gap-2">
+                            <span class="px-2 py-1 rounded bg-gray-700 text-xs">VS Code</span>
+                            <span class="px-2 py-1 rounded bg-gray-700 text-xs">JetBrains</span>
+                            <span class="px-2 py-1 rounded bg-gray-700 text-xs">Neovim</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Cursor IDE -->
+                <div class="glass-card rounded-2xl overflow-hidden feature-card border-2 border-purple-300">
+                    <div class="bg-gradient-to-br from-purple-500 to-purple-700 p-6 text-white">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center gap-3">
+                                <iconify-icon icon="simple-icons:cursor" class="text-3xl"></iconify-icon>
+                                <h3 class="font-bold text-xl">Cursor IDE</h3>
+                            </div>
+                            <span class="px-3 py-1 rounded-full bg-yellow-400 text-gray-900 text-xs font-bold">NEW</span>
+                        </div>
+                        <p class="text-sm text-purple-100">VS Code fork with built-in AI chat and code generation</p>
+                        <div class="mt-4 flex gap-2">
+                            <span class="px-2 py-1 rounded bg-purple-600 text-xs">ChatGPT Integration</span>
+                            <span class="px-2 py-1 rounded bg-purple-600 text-xs">Codebase Analysis</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- ChatGPT/Claude -->
+                <div class="glass-card rounded-2xl overflow-hidden feature-card">
+                    <div class="bg-gradient-to-br from-green-500 to-green-700 p-6 text-white">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center gap-3">
+                                <iconify-icon icon="logos:chatgpt-icon" class="text-3xl"></iconify-icon>
+                                <h3 class="font-bold text-xl">ChatGPT / Claude</h3>
+                            </div>
+                            <span class="px-3 py-1 rounded-full bg-white text-green-700 text-xs font-bold">FREE/$20</span>
+                        </div>
+                        <p class="text-sm text-green-100">General-purpose AI for coding questions and debugging</p>
+                        <div class="mt-4 flex gap-2">
+                            <span class="px-2 py-1 rounded bg-green-600 text-xs">Code Explanation</span>
+                            <span class="px-2 py-1 rounded bg-green-600 text-xs">Debugging Help</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Warning -->
+            <div class="glass-card rounded-2xl p-6 bg-yellow-50 border border-yellow-200">
+                <div class="flex items-start gap-4">
+                    <iconify-icon icon="lucide:alert-triangle" class="text-2xl text-yellow-600 flex-shrink-0 mt-1"></iconify-icon>
+                    <div>
+                        <h4 class="font-bold text-apple-gray-800 mb-2">⚠️ Important: Always review AI-generated code</h4>
+                        <p class="text-sm text-apple-gray-600">
+                            Don't blindly trust AI output! Use AI as assistant, not replacement. 
+                            Always verify security, performance, and correctness of generated code.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider max-w-7xl mx-auto"></div>
+
+    <!-- PRACTICE ASSIGNMENT SECTION -->
+    <section id="practice" class="py-24 bg-gradient-to-b from-apple-gray-50 to-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-50 text-red-600 text-sm font-semibold mb-4">
+                    <iconify-icon icon="lucide:graduation-cap"></iconify-icon>
+                    ПРАКТИЧЕСКОЕ ЗАДАНИЕ
+                </div>
+                <h2 class="text-4xl sm:text-5xl font-bold text-apple-gray-800 mb-4">Учебная практика: Аналитический отчёт</h2>
+                <p class="text-xl text-apple-gray-500 max-w-3xl mx-auto">
+                    Индивидуальное исследование и обоснованный выбор ПО разработчика
+                </p>
+            </div>
+
+            <!-- Goal Card -->
+            <div class="glass-card rounded-3xl p-8 md:p-12 mb-12 border-l-4 border-l-apple-blue">
+                <div class="flex items-start gap-6">
+                    <div class="w-16 h-16 rounded-2xl bg-blue-100 flex items-center justify-center flex-shrink-0">
+                        <iconify-icon icon="lucide:target" class="text-3xl text-apple-blue"></iconify-icon>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-apple-gray-800 mb-4">Цель задания</h3>
+                        <p class="text-lg text-apple-gray-600 mb-6 leading-relaxed">
+                            Провести сравнительный анализ популярных инструментов разработки в каждой категории, 
+                            выбрать оптимальный набор ПО для своей рабочей станции и <strong>обосновать выбор инженерными аргументами</strong>.
+                        </p>
+                        
+                        <div class="grid md:grid-cols-3 gap-4">
+                            <div class="p-4 rounded-xl bg-blue-50">
+                                <div class="font-semibold text-apple-blue mb-1">НЕ «мне нравится»</div>
+                                <div class="text-xs text-apple-gray-600">А «выбираю X, потому что для моих задач Y важно, а Z не подходит из-за...»</div>
+                            </div>
+                            <div class="p-4 rounded-xl bg-purple-50">
+                                <div class="font-semibold text-apple-purple mb-1">НЕ копировать</div>
+                                <div class="text-xs text-apple-gray-600">У каждого студента должен быть СВОЙ уникальный стек</div>
+                            </div>
+                            <div class="p-4 rounded-xl bg-green-50">
+                                <div class="font-semibold text-apple-green mb-1">Сравнивать</div>
+                                <div class="text-xs text-apple-gray-600">Минимум 3 варианта в каждой категории с таблицами</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- What Students Should Do -->
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <div class="glass-card rounded-2xl p-8 feature-card text-center">
+                    <div class="w-16 h-16 rounded-2xl bg-blue-100 flex items-center justify-center mx-auto mb-6">
+                        <iconify-icon icon="lucide:search" class="text-3xl text-apple-blue"></iconify-icon>
+                    </div>
+                    <h3 class="text-xl font-bold text-apple-gray-800 mb-4">1. Исследовать</h3>
+                    <p class="text-apple-gray-600 text-sm leading-relaxed">
+                        Изучить топ-ПО в каждой категории: характеристики, преимущества, недостатки, 
+                        системные требования, лицензирование. Использовать данный гайд как источник.
+                    </p>
+                </div>
+                
+                <div class="glass-card rounded-2xl p-8 feature-card text-center">
+                    <div class="w-16 h-16 rounded-2xl bg-purple-100 flex items-center justify-center mx-auto mb-6">
+                        <iconify-icon icon="lucide:scales" class="text-3xl text-apple-purple"></iconify-icon>
+                    </div>
+                    <h3 class="text-xl font-bold text-apple-gray-800 mb-4">2. Сравнить</h3>
+                    <p class="text-apple-gray-600 text-sm leading-relaxed">
+                        Построить таблицы сравнения по критериям: производительность, удобство, 
+                        экосистема, цена, сообщество, совместимость с вашей ОС.
+                    </p>
+                </div>
+                
+                <div class="glass-card rounded-2xl p-8 feature-card text-center">
+                    <div class="w-16 h-16 rounded-2xl bg-green-100 flex items-center justify-center mx-auto mb-6">
+                        <iconify-icon icon="lucide:check-circle-2" class="text-3xl text-apple-green"></iconify-icon>
+                    </div>
+                    <h3 class="text-xl font-bold text-apple-gray-800 mb-4">3. Обосновать</h3>
+                    <p class="text-apple-gray-600 text-sm leading-relaxed">
+                        Сделать выбор и аргументировать: почему этот инструмент лучше подходит 
+                        именно для ваших задач, бюджета, оборудования и рабочего процесса.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Categories to Analyze -->
+            <div class="glass-card rounded-2xl p-8 mb-12">
+                <h3 class="text-2xl font-bold text-apple-gray-800 mb-6">📋 6 категорий для анализа (обязательно все):</h3>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="p-5 rounded-xl bg-gradient-to-br from-blue-50 to-blue-100/50 border border-blue-200">
+                        <div class="flex items-center gap-3 mb-3">
+                            <iconify-icon icon="lucide:monitor" class="text-2xl text-apple-blue"></iconify-icon>
+                            <h4 class="font-bold text-apple-gray-800">1. Операционная система</h4>
+                        </div>
+                        <p class="text-sm text-apple-gray-600 mb-3">Выбрать ОС для разработки</p>
+                        <div class="text-xs text-apple-gray-500">Варианты: Windows 11 (+WSL2), macOS (Intel/Silicon), Linux (Ubuntu/Fedora/Arch/Pop!_OS)</div>
+                    </div>
+                    
+                    <div class="p-5 rounded-xl bg-gradient-to-br from-purple-50 to-purple-100/50 border border-purple-200">
+                        <div class="flex items-center gap-3 mb-3">
+                            <iconify-icon icon="lucide:code-2" class="text-2xl text-apple-purple"></iconify-icon>
+                            <h4 class="font-bold text-apple-gray-800">2. IDE / Редактор кода</h4>
+                        </div>
+                        <p class="text-sm text-apple-gray-600 mb-3">Основной инструмент написания кода</p>
+                        <div class="text-xs text-apple-gray-500">Варианты: VS Code, JetBrains (WebStorm/PyCharm/etc.), Vim/Neovim, Sublime Text</div>
+                    </div>
+                    
+                    <div class="p-5 rounded-xl bg-gradient-to-br from-green-50 to-green-100/50 border border-green-200">
+                        <div class="flex items-center gap-3 mb-3">
+                            <iconify-icon icon="lucide:terminal" class="text-2xl text-apple-green"></iconify-icon>
+                            <h4 class="font-bold text-apple-gray-800">3. Терминал + Shell</h4>
+                        </div>
+                        <p class="text-sm text-apple-gray-600 mb-3">Командная строка</p>
+                        <div class="text-xs text-apple-gray-500">Терминал: WT/iTerm2/Kitty • Shell: Bash/Zsh/Fish/PowerShell</div>
+                    </div>
+                    
+                    <div class="p-5 rounded-xl bg-gradient-to-br from-orange-50 to-orange-100/50 border border-orange-200">
+                        <div class="flex items-center gap-3 mb-3">
+                            <iconify-icon icon="logos:git-icon" class="text-2xl text-apple-orange"></iconify-icon>
+                            <h4 class="font-bold text-apple-gray-800">4. Git-клиент</h4>
+                        </div>
+                        <p class="text-sm text-apple-gray-600 mb-3">Работа с системой контроля версий</p>
+                        <div class="text-xs text-apple-gray-500">Варианты: Git CLI, GitHub Desktop, GitKraken, SourceTree, LazyGit</div>
+                    </div>
+                    
+                    <div class="p-5 rounded-xl bg-gradient-to-br from-cyan-50 to-cyan-100/50 border border-cyan-200">
+                        <div class="flex items-center gap-3 mb-3">
+                            <iconify-icon icon="logos:docker-icon" class="text-2xl text-cyan-600"></iconify-icon>
+                            <h4 class="font-bold text-apple-gray-800">5. Контейнеры (Docker)</h4>
+                        </div>
+                        <p class="text-sm text-apple-gray-600 mb-3">Изоляция окружений</p>
+                        <div class="text-xs text-apple-gray-500">Docker Desktop (Mac/Win) или Docker Engine (Linux native)</div>
+                    </div>
+                    
+                    <div class="p-5 rounded-xl bg-gradient-to-br from-pink-50 to-pink-100/50 border border-pink-200">
+                        <div class="flex items-center gap-3 mb-3">
+                            <iconify-icon icon="lucide:brain" class="text-2xl text-apple-pink"></iconify-icon>
+                            <h4 class="font-bold text-apple-gray-800">6. AI-ассистент (опционально)</h4>
+                        </div>
+                        <p class="text-sm text-apple-gray-600 mb-3">Ускорение разработки</p>
+                        <div class="text-xs text-apple-gray-500">Варианты: GitHub Copilot, Cursor IDE, ChatGPT/Claude</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Expected Outcome -->
+            <div class="glass-card rounded-2xl p-8 bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200">
+                <h3 class="text-2xl font-bold text-apple-gray-800 mb-6 flex items-center gap-3">
+                    <iconify-icon icon="lucide:trophy" class="text-apple-green"></iconify-icon>
+                    Что должно получиться?
+                </h3>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h4 class="font-semibold text-apple-gray-800 mb-4">📄 Документ (отчёт):</h4>
+                        <ul class="space-y-3 text-sm text-apple-gray-700">
+                            <li class="flex items-start gap-2">
+                                <iconify-icon icon="lucide:file-text" class="text-apple-green mt-1"></iconify-icon>
+                                <span><strong>15-25 страниц</strong> структурированного анализа</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <iconify-icon icon="lucide:table" class="text-apple-green mt-1"></iconify-icon>
+                                <span><strong>6+ сравнительных таблиц</strong> по критериям</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <iconify-icon icon="lucide:image" class="text-apple-green mt-1"></iconify-icon>
+                                <span><strong>Скриншоты</strong> установки и настройки выбранного ПО</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <iconify-icon icon="lucide:settings" class="text-apple-green mt-1"></iconify-icon>
+                                <span><strong>Конфигурационные файлы</strong> (settings.json, .zshrc, etc.)</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <iconify-icon icon="lucide:message-square" class="text-apple-green mt-1"></iconify-icon>
+                                <span><strong>Обоснование выбора</strong> в каждой категории</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-semibold text-apple-gray-800 mb-4">💻 Практический результат:</h4>
+                        <ul class="space-y-3 text-sm text-apple-gray-700">
+                            <li class="flex items-start gap-2">
+                                <iconify-icon icon="lucide:check-circle" class="text-apple-blue mt-1"></iconify-icon>
+                                <span>Настроенная рабочая станция с выбранным стеком</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <iconify-icon icon="lucide:check-circle" class="text-apple-blue mt-1"></iconify-icon>
+                                <span>Понимание ПОЧЕМУ выбран именно этот инструмент</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <iconify-icon icon="lucide:check-circle" class="text-apple-blue mt-1"></iconify-icon>
+                                <span>Навык сравнительного анализа ПО</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <iconify-icon icon="lucide:check-circle" class="text-apple-blue mt-1"></iconify-icon>
+                                <span>Умение аргументировать технические решения</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <iconify-icon icon="lucide:check-circle" class="text-apple-blue mt-1"></iconify-icon>
+                                <span>Портфолио для демонстрации работодателю</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider max-w-7xl mx-auto"></div>
+
+    <!-- TEMPLATE SECTION -->
+    <section id="template" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-teal-50 text-teal-600 text-sm font-semibold mb-4">
+                    <iconify-icon icon="lucide:file-check"></iconify-icon>
+                    ШАБЛОН ОТЧЁТА
+                </div>
+                <h2 class="text-4xl sm:text-5xl font-bold text-apple-gray-800 mb-4">Подробная структура документа</h2>
+                <p class="text-xl text-apple-gray-500 max-w-3xl mx-auto">
+                    Следуйте этому шаблону с примерами заполнения
+                </p>
+            </div>
+
+            <!-- Template Table -->
+            <div class="glass-card rounded-2xl overflow-hidden mb-12">
+                <div class="overflow-x-auto">
+                    <table class="w-full comparison-table">
+                        <thead>
+                            <tr class="border-b border-apple-gray-200">
+                                <th class="text-left p-6 text-apple-gray-800 font-semibold w-24">Раздел</th>
+                                <th class="text-left p-6 text-apple-gray-800 font-semibold">Содержание</th>
+                                <th class="text-left p-6 text-apple-gray-800 font-semibold w-40">Объём</th>
+                                <th class="text-left p-6 text-apple-gray-800 font-semibold w-56">Что написать (пример)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b border-apple-gray-100 hover:bg-apple-gray-50 transition-colors">
+                                <td class="p-6 align-top">
+                                    <div class="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center text-blue-600 font-bold">1</div>
+                                </td>
+                                <td class="p-6 align-top">
+                                    <div class="font-bold text-apple-gray-800 mb-1">Титульный лист</div>
+                                    <div class="text-sm text-apple-gray-500">ФИО, группа, тема практики</div>
+                                </td>
+                                <td class="p-6 align-top text-sm text-apple-gray-500">1 стр.</td>
+                                <td class="p-6 align-top text-sm text-apple-gray-600 bg-blue-50 rounded-lg">
+                                    <em>«Анализ и подбор программного обеспечения для рабочей станции разработчика»<br>
+                                    Студент: Иванов И.И., группа ИСП-202</em>
+                                </td>
+                            </tr>
+                            
+                            <tr class="border-b border-apple-gray-100 hover:bg-apple-gray-50 transition-colors">
+                                <td class="p-6 align-top">
+                                    <div class="w-10 h-10 rounded-xl bg-purple-100 flex items-center justify-center text-purple-600 font-bold">2</div>
+                                </td>
+                                <td class="p-6 align-top">
+                                    <div class="font-bold text-apple-gray-800 mb-1">Введение</div>
+                                    <div class="text-sm text-apple-gray-500">Цель, задачи, актуальность</div>
+                                </td>
+                                <td class="p-6 align-top text-sm text-apple-gray-500">1-2 стр.</td>
+                                <td class="p-6 align-top text-sm text-apple-gray-600 bg-purple-50 rounded-lg">
+                                    <em>«Почему важен правильный выбор ПО? Разработчик проводит за IDE 8+ часов в день. 
+                                    Неподходящий инструмент снижает продуктивность на 20-40%. Цель — найти оптимальный 
+                                    стек для моих задач: веб-разработка на Python/JavaScript...»</em>
+                                </td>
+                            </tr>
+                            
+                            <tr class="border-b border-apple-gray-100 hover:bg-apple-gray-50 transition-colors">
+                                <td class="p-6 align-top">
+                                    <div class="w-10 h-10 rounded-xl bg-green-100 flex items-center justify-center text-green-600 font-bold">3</div>
+                                </td>
+                                <td class="p-6 align-top">
+                                    <div class="font-bold text-apple-gray-800 mb-1">Глава 1: Анализ ОС</div>
+                                    <div class="text-sm text-apple-gray-500">Сравнение Windows/macOS/Linux</div>
+                                </td>
+                                <td class="p-6 align-top text-sm text-apple-gray-500">3-4 стр.</td>
+                                <td class="p-6 align-top text-sm text-apple-gray-600 bg-green-50 rounded-lg">
+                                    <strong>Таблица сравнения:</strong><br>
+                                    | Критерий | Windows 11 | macOS | Ubuntu |<br>
+                                    |----------|-----------|-------|--------|<br>
+                                    | Цена | ~$100 (OEM) | от $1999 | Бесплатно |<br>
+                                    | Совместимость с Python | ✅ | ✅ | ✅ |<br>
+                                    | Docker | Через WSL2 | Нативно | Нативно |<br><br>
+                                    <strong>Мой выбор: Ubuntu 24.04 LTS</strong><br>
+                                    <em>«Выбираю Ubuntu, потому что: 1) Бесплатно — важен бюджет студента. 
+                                    2) Docker работает нативно быстрее, чем через WSL2. 3) Мой ноутбук имеет 
+                                    только 8GB RAM — Windows потребляет слишком много. 4) Планирую карьеру 
+                                    в DevOps — нужно знать Linux...»</em>
+                                </td>
+                            </tr>
+                            
+                            <tr class="border-b border-apple-gray-100 hover:bg-apple-gray-50 transition-colors">
+                                <td class="p-6 align-top">
+                                    <div class="w-10 h-10 rounded-xl bg-yellow-100 flex items-center justify-center text-yellow-600 font-bold">4</div>
+                                </td>
+                                <td class="p-6 align-top">
+                                    <div class="font-bold text-apple-gray-800 mb-1">Глава 2: Выбор IDE</div>
+                                    <div class="text-sm text-apple-gray-500">Сравнение редакторов кода</div>
+                                </td>
+                                <td class="p-6 align-top text-sm text-apple-gray-500">3-4 стр.</td>
+                                <td class="p-6 align-top text-sm text-apple-gray-600 bg-yellow-50 rounded-lg">
+                                    <strong>Сравнение IDE:</strong><br>
+                                    | Критерий | VS Code | PyCharm | Vim |<br>
+                                    | Запуск | &lt;2 сек | 10-30 сек | мгновенно |<br>
+                                    | Автодополнение Python | Хорошее+Copilot | Лучшее (Jedi) | Требует настройки |<br>
+                                    | Цена | Бесплатно | $149/год (free для студ.) | Бесплатно |<br>
+                                    | RAM | ~500MB | ~1.5GB | ~50MB |<br><br>
+                                    <strong>Мой выбор: VS Code</strong><br>
+                                    <em>«Выбираю VS Code, потому что: 1) Работаю с несколькими языками (Python, JS, SQL) — 
+                                    PyCharm только для Python. 2) Расширения: Copilot, Docker, GitLens покрывают все нужды. 
+                                    3) Легкий — мой старый ноутбук не потянет PyCharm. 4) Большое сообщество — любой вопрос 
+                                    решается на StackOverflow...»</em>
+                                </td>
+                            </tr>
+                            
+                            <tr class="border-b border-apple-gray-100 hover:bg-apple-gray-50 transition-colors">
+                                <td class="p-6 align-top">
+                                    <div class="w-10 h-10 rounded-xl bg-orange-100 flex items-center justify-center text-orange-600 font-bold">5</div>
+                                </td>
+                                <td class="p-6 align-top">
+                                    <div class="font-bold text-apple-gray-800 mb-1">Глава 3: Инструментарий</div>
+                                    <div class="text-sm text-apple-gray-500">Терминал, Git, Docker, AI</div>
+                                </td>
+                                <td class="p-6 align-top text-sm text-apple-gray-500">4-5 стр.</td>
+                                <td class="p-6 align-top text-sm text-apple-gray-600 bg-orange-50 rounded-lg">
+                                    <strong>По каждому инструменту:</strong><br><br>
+                                    <strong>Терминал:</strong> Kitty (выбрал за GPU acceleration и tiling)<br>
+                                    <strong>Shell:</strong> Zsh + Oh My Zsh + Powerlevel10k тема (красивая + функциональная)<br>
+                                    <strong>Git:</strong> Git CLI (фундаментальный навык) + LazyGit для визуального просмотра<br>
+                                    <strong>Docker:</strong> Docker Engine (native на Linux)<br>
+                                    <strong>AI:</strong> GitHub Copilot ($10/мес — стоит для продуктивности)<br><br>
+                                    <em>[Скриншоты настройки каждого инструмента]</em>
+                                </td>
+                            </tr>
+                            
+                            <tr class="border-b border-apple-gray-100 hover:bg-apple-gray-50 transition-colors">
+                                <td class="p-6 align-top">
+                                    <div class="w-10 h-10 rounded-xl bg-cyan-100 flex items-center justify-center text-cyan-600 font-bold">6</div>
+                                </td>
+                                <td class="p-6 align-top">
+                                    <div class="font-bold text-apple-gray-800 mb-1">Заключение</div>
+                                    <div class="text-sm text-apple-gray-500">Итоговый стек + выводы</div>
+                                </td>
+                                <td class="p-6 align-top text-sm text-apple-gray-500">1-2 стр.</td>
+                                <td class="p-6 align-top text-sm text-apple-gray-600 bg-cyan-50 rounded-lg">
+                                    <strong>ИТОГОВЫЙ СТЕК 2025:</strong><br>
+                                    🖥️ ОС: Ubuntu 24.04 LTS<br>
+                                    💻 IDE: VS Code + Copilot<br>
+                                    🖥️ Терминал: Kitty<br>
+                                    ⚡ Shell: Zsh + Powerlevel10k<br>
+                                    🔀 Git: Git CLI + LazyGit<br>
+                                    🐳 Docker: Docker Engine<br>
+                                    🤖 AI: GitHub Copilot<br><br>
+                                    <em>«В результате исследования я сформировал оптимальный стек для задач веб-разработки 
+                                    на Python/JavaScript. Выбранные инструменты обеспечивают баланс между производительностью, 
+                                    удобством использования и требованиями к ресурсам моего оборудования (8GB RAM). 
+                                    Планирую углубиться в Vim в будущем для работы через SSH на серверах...»</em>
+                                </td>
+                            </tr>
+                            
+                            <tr class="hover:bg-apple-gray-50 transition-colors">
+                                <td class="p-6 align-top">
+                                    <div class="w-10 h-10 rounded-xl bg-gray-200 flex items-center justify-center text-gray-600 font-bold">7</div>
+                                </td>
+                                <td class="p-6 align-top">
+                                    <div class="font-bold text-apple-gray-800 mb-1">Приложения</div>
+                                    <div class="text-sm text-apple-gray-500">Дополнительные материалы</div>
+                                </td>
+                                <td class="p-6 align-top text-sm text-apple-gray-500">по need</td>
+                                <td class="p-6 align-top text-sm text-apple-gray-600 bg-gray-50 rounded-lg">
+                                    • Скриншоты установки ПО (по шагам)<br>
+                                    • Конфиги: settings.json, .zshrc, kitty.conf<br>
+                                    • Полные таблицы сравнения (можно в формате Excel)<br>
+                                    • Ссылки на источники (документация, статьи, видео)
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Grading Criteria -->
+            <div class="grid md:grid-cols-2 gap-8 mb-12">
+                <div class="glass-card rounded-2xl p-8">
+                    <h3 class="text-xl font-bold text-apple-gray-800 mb-6 flex items-center gap-3">
+                        <iconify-icon icon="lucide:star" class="text-yellow-500"></iconify-icon>
+                        Критерии оценки
+                    </h3>
+                    
+                    <div class="space-y-4">
+                        <div class="p-4 rounded-xl bg-green-50 border border-green-200">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="font-bold text-green-700">«Отлично» (90-100)</span>
+                                <span class="px-2 py-1 rounded bg-green-500 text-white text-xs font-bold">5</span>
+                            </div>
+                            <p class="text-sm text-apple-gray-700">
+                                Глубокий анализ всех 6 категорий, детальные таблицы (5+ критериев), 
+                                уникальное обоснование с привязкой к личным задачам, скриншоты настройки, 
+                                конфиги в приложениях, рефлексия о процессе выбора.
+                            </p>
+                        </div>
+                        
+                        <div class="p-4 rounded-xl bg-blue-50 border border-blue-200">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="font-bold text-blue-700">«Хорошо» (75-89)</span>
+                                <span class="px-2 py-1 rounded bg-blue-500 text-white text-xs font-bold">4</span>
+                            </div>
+                            <p class="text-sm text-apple-gray-700">
+                                Все категории покрыты, корректные таблицы сравнения, обоснование присутствует 
+                                но может быть общим («хороший инструмент»), скриншоты есть.
+                            </p>
+                        </div>
+                        
+                        <div class="p-4 rounded-xl bg-yellow-50 border border-yellow-200">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="font-bold text-yellow-700">«Удовлетворительно» (60-74)</span>
+                                <span class="px-2 py-1 rounded bg-yellow-500 text-white text-xs font-bold">3</span>
+                            </div>
+                            <p class="text-sm text-apple-gray-700">
+                                Все категории рассмотрены, но сравнение поверхностное (2-3 критерия), 
+                                обоснование слабое («нравится», «популярный»), мало скриншотов.
+                            </p>
+                        </div>
+                        
+                        <div class="p-4 rounded-xl bg-red-50 border border-red-200">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="font-bold text-red-700">«Неудовлетворительно» (&lt;60)</span>
+                                <span class="px-2 py-1 rounded bg-red-500 text-white text-xs font-bold">2</span>
+                            </div>
+                            <p class="text-sm text-apple-gray-700">
+                                Не все категории покрыты, нет сравнительных таблиц, выбор не обоснован, 
+                                работа неполная или скопирована у одногруппника.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="glass-card rounded-2xl p-8">
+                    <h3 class="text-xl font-bold text-apple-gray-800 mb-6 flex items-center gap-3">
+                        <iconify-icon icon="lucide:check-square" class="text-green-500"></iconify-icon>
+                        Обязательные элементы (чеклист)
+                    </h3>
+                    
+                    <div class="space-y-3">
+                        <label class="flex items-start gap-3 p-3 rounded-xl hover:bg-apple-gray-50 cursor-pointer transition-colors">
+                            <input type="checkbox" class="mt-1 w-5 h-5 rounded border-apple-gray-300 text-apple-blue focus:ring-apple-blue">
+                            <span class="text-sm text-apple-gray-700">
+                                <strong>Сравнительные таблицы</strong> минимум по 5 критериям в каждой из 6 категорий
+                            </span>
+                        </label>
+                        
+                        <label class="flex items-start gap-3 p-3 rounded-xl hover:bg-apple-gray-50 cursor-pointer transition-colors">
+                            <input type="checkbox" class="mt-1 w-5 h-5 rounded border-apple-gray-300 text-apple-blue focus:ring-apple-blue">
+                            <span class="text-sm text-apple-gray-700">
+                                <strong>Обоснование выбора</strong> — не «нравится», а «выбираю X, потому что для моих задач Y...»
+                            </span>
+                        </label>
+                        
+                        <label class="flex items-start gap-3 p-3 rounded-xl hover:bg-apple-gray-50 cursor-pointer transition-colors">
+                            <input type="checkbox" class="mt-1 w-5 h-5 rounded border-apple-gray-300 text-apple-blue focus:ring-apple-blue">
+                            <span class="text-sm text-apple-gray-700">
+                                <strong>Скриншоты</strong> процесса установки и настройки выбранного ПО (минимум 10 штук)
+                            </span>
+                        </label>
+                        
+                        <label class="flex items-start gap-3 p-3 rounded-xl hover:bg-apple-gray-50 cursor-pointer transition-colors">
+                            <input type="checkbox" class="mt-1 w-5 h-5 rounded border-apple-gray-300 text-apple-blue focus:ring-apple-blue">
+                            <span class="text-sm text-apple-gray-700">
+                                <strong>Конфигурационные файлы</strong> (settings.json, .zshrc, etc.) в приложениях
+                            </span>
+                        </label>
+                        
+                        <label class="flex items-start gap-3 p-3 rounded-xl hover:bg-apple-gray-50 cursor-pointer transition-colors">
+                            <input type="checkbox" class="mt-1 w-5 h-5 rounded border-apple-gray-300 text-apple-blue focus:ring-apple-blue">
+                            <span class="text-sm text-apple-gray-700">
+                                <strong>Итоговая таблица «Мой стек 2025»</strong> — сводка всех выборов
+                            </span>
+                        </label>
+                        
+                        <label class="flex items-start gap-3 p-3 rounded-xl hover:bg-apple-gray-50 cursor-pointer transition-colors">
+                            <input type="checkbox" class="mt-1 w-5 h-5 rounded border-apple-gray-300 text-apple-blue focus:ring-apple-blue">
+                            <span class="text-sm text-apple-gray-700">
+                                <strong>Выводы и рефлексия</strong> — что узнал, чему научился, какие сложности возникли
+                            </span>
+                        </label>
+                        
+                        <label class="flex items-start gap-3 p-3 rounded-xl hover:bg-apple-gray-50 cursor-pointer transition-colors">
+                            <input type="checkbox" class="mt-1 w-5 h-5 rounded border-apple-gray-300 text-apple-blue focus:ring-apple-blue">
+                            <span class="text-sm text-apple-gray-700">
+                                <strong>Уникальность</strong> — ваш стек отличается от одногруппников (разные задачи = разные выборы)
+                            </span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Competencies Mapping -->
+            <div class="glass-card rounded-2xl p-8">
+                <h3 class="text-2xl font-bold text-apple-gray-800 mb-8 text-center">Соответствие компетенциям ПМ.03</h3>
+                
+                <div class="grid md:grid-cols-4 gap-6">
+                    <div class="text-center p-6 rounded-2xl bg-blue-50 border border-blue-200">
+                        <div class="w-14 h-14 rounded-full bg-blue-100 flex items-center justify-center mx-auto mb-4">
+                            <span class="text-blue-600 font-bold text-lg">ПК 4.1</span>
+                        </div>
+                        <h4 class="font-bold text-apple-gray-800 mb-2">Инсталляция ПО</h4>
+                        <p class="text-xs text-apple-gray-600">
+                            Демонстрируете процесс установки и настройки выбранного ПО со скриншотами
+                        </p>
+                    </div>
+                    
+                    <div class="text-center p-6 rounded-2xl bg-yellow-50 border border-yellow-200">
+                        <div class="w-14 h-14 rounded-full bg-yellow-100 flex items-center justify-center mx-auto mb-4">
+                            <span class="text-yellow-600 font-bold text-lg">ПК 4.2</span>
+                        </div>
+                        <h4 class="font-bold text-apple-gray-800 mb-2">Анализ характеристик</h4>
+                        <p class="text-xs text-apple-gray-600">
+                            Сравниваете ПО по критериям: производительность, ресурсы, функционал, цена
+                        </p>
+                    </div>
+                    
+                    <div class="text-center p-6 rounded-2xl bg-purple-50 border border-purple-200">
+                        <div class="w-14 h-14 rounded-full bg-purple-100 flex items-center justify-center mx-auto mb-4">
+                            <span class="text-purple-600 font-bold text-lg">ПК 4.3</span>
+                        </div>
+                        <h4 class="font-bold text-apple-gray-800 mb-2">Модификация</h4>
+                        <p class="text-xs text-apple-gray-600">
+                            Настраиваете ПО под свои задачи: конфиги, плагины, темы, hotkeys
+                        </p>
+                    </div>
+                    
+                    <div class="text-center p-6 rounded-2xl bg-green-50 border border-green-200">
+                        <div class="w-14 h-14 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-4">
+                            <span class="text-green-600 font-bold text-lg">ПК 4.4</span>
+                        </div>
+                        <h4 class="font-bold text-apple-gray-800 mb-2">Защита ПО</h4>
+                        <p class="text-xs text-apple-gray-600">
+                            Рассматриваете лицензии, безопасность, best practices, обновления
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="py-24 bg-gradient-to-b from-apple-gray-50 to-white">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <iconify-icon icon="lucide:rocket" class="text-6xl text-apple-blue mb-6"></iconify-icon>
+            <h2 class="text-4xl sm:text-5xl font-bold text-apple-gray-800 mb-6">
+                Готовы создать свой идеальный стек?
+            </h2>
+            <p class="text-xl text-apple-gray-500 mb-10 max-w-2xl mx-auto">
+                Используйте этот гайд как источник информации для анализа. 
+                Изучите каждую категорию, сравните варианты, сделайте осознанный выбор — и документируйте его!
+            </p>
+            
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#systems" class="group inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-apple-blue text-white font-semibold text-lg shadow-xl shadow-apple-blue/25 hover:bg-apple-blue-hover hover:shadow-2xl hover:shadow-apple-blue/30 transition-all hover:-translate-y-1">
+                    <iconify-icon icon="lucide:book-open"></iconify-icon>
+                    <span>Изучить материалы</span>
+                </a>
+                <a href="#practice" class="group inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-apple-gray-100 text-apple-gray-800 font-semibold text-lg hover:bg-apple-gray-200 transition-all hover:-translate-y-1">
+                    <iconify-icon icon="lucide:edit-3"></iconify-icon>
+                    <span>Начать отчёт</span>
+                </a>
+            </div>
+        </div>
+    </section>
